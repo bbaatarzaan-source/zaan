@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сурагч бүртгүүлэх | ZAAN Learning</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 35px 18px;
+            display: grid;
+            place-items: center;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            color: #f8f7ff;
+            background:
+                radial-gradient(ellipse at 10% 15%, rgba(133,87,255,.16), transparent 42%),
+                #100f16;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 540px;
+            padding: 36px;
+            border: 1px solid rgba(167,139,250,.22);
+            border-radius: 24px;
+            background: linear-gradient(145deg,#231d33,#16141f);
+            box-shadow: 0 25px 80px rgba(0,0,0,.3);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            color: white;
+            font-size: 21px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: linear-gradient(135deg,#b18aff,#7542ed);
+        }
+
+        .accent { color: #b99aff; }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: #b99aff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-size: 29px;
+        }
+
+        .subtitle {
+            margin: 0 0 25px;
+            color: #aaa1bc;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 14px;
+        }
+
+        .field { min-width: 0; }
+
+        label {
+            display: block;
+            margin: 17px 0 8px;
+            color: #e8e2f4;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        input, select {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px;
+            border: 1px solid rgba(167,139,250,.2);
+            border-radius: 10px;
+            outline: none;
+            background: #15121d;
+            color: #fff;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        input:focus, select:focus {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 3px rgba(133,87,255,.12);
+        }
+
+        input::placeholder { color: #827991; }
+
+        .school {
+            padding: 14px;
+            border: 1px solid rgba(167,139,250,.18);
+            border-radius: 10px;
+            background: rgba(133,87,255,.08);
+            color: #e8e2f4;
+            font-size: 13px;
+        }
+
+        .hint {
+            margin: 7px 0 0;
+            color: #9288a3;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .submit {
+            width: 100%;
+            min-height: 54px;
+            margin-top: 25px;
+            border: 0;
+            border-radius: 11px;
+            background: linear-gradient(110deg,#9568ff,#7040ed);
+            color: white;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .submit:disabled { opacity: .6; cursor: wait; }
+
+        #message {
+            margin: 16px 0 0;
+            color: #c4b5fd;
+            font-size: 13px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .links {
+            margin-top: 22px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            text-align: center;
+            font-size: 12px;
+            line-height: 2;
+            color: #aaa1bc;
+        }
+
+        a { color: #c4b5fd; text-decoration: none; }
+        a:hover { color: white; }
+
+        @media (max-width: 480px) {
+            .card { padding: 25px 20px; }
+            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 25px; }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="card">
+        <a class="brand" href="./portal.html">
+            <span class="brand-mark">Z</span>
+            <span>ZAAN <span class="accent">Learning</span></span>
+        </a>
+
+        <p class="eyebrow">STUDENT REGISTRATION</p>
+        <h1>Шинээр бүртгүүлэх</h1>
+        <p class="subtitle">
+            Мэдлэгээ хөгжүүлж, ирээдүйгээ бүтээх эхний алхмаа хийгээрэй.
+            Сургуулийн имэйл хаягаа ашиглана уу.
+        </p>
+
+        <form id="register-form">
+            <div class="field">
+                <label for="full-name">Овог, нэр</label>
+                <input
+                    id="full-name"
+                    type="text"
+                    maxlength="100"
+                    autocomplete="name"
+                    placeholder="Овог, нэрээ оруулна уу"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="email">Сургуулийн имэйл</label>
+                <input
+                    id="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="name@orgil.edu.mn"
+                    required
+                >
+                <p class="hint">Зөвхөн @orgil.edu.mn хаяг ашиглана.</p>
+            </div>
+
+            <div class="grid">
+                <div class="field">
+                    <label for="grade">Анги</label>
+                    <select id="grade" required>
+                        <option value="">Анги сонгох</option>
+                        <option value="6">6-р анги</option>
+                        <option value="7">7-р анги</option>
+                        <option value="8">8-р анги</option>
+                        <option value="9">9-р анги</option>
+                        <option value="10">10-р анги</option>
+                        <option value="11">11-р анги</option>
+                        <option value="12">12-р анги</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="class-group">Бүлэг</label>
+                    <select id="class-group" required>
+                        <option value="">Бүлэг сонгох</option>
+                        <option value="1">1-р бүлэг</option>
+                        <option value="2">2-р бүлэг</option>
+                        <option value="3">3-р бүлэг</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Сургууль</label>
+                <div class="school">Оргил олон улсын сургууль</div>
+            </div>
+
+            <div class="grid">
+                <div class="field">
+                    <label for="password">Нууц үг</label>
+                    <input
+                        id="password"
+                        type="password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        placeholder="8-аас дээш тэмдэгт"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="confirm-password">Нууц үг давтах</label>
+                    <input
+                        id="confirm-password"
+                        type="password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        placeholder="Нууц үгээ давтана уу"
+                        required
+                    >
+                </div>
+            </div>
+
+            <button class="submit" id="register-button" type="submit">
+                Бүртгэл үүсгэх →
+            </button>
+
+            <p id="message" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="links">
+            Бүртгэлтэй юу? <a href="./student.html">Нэвтрэх</a>
+            <br>
+            <a href="./portal.html">← Нэвтрэх сонголт руу буцах</a>
+        </div>
+    </main>
+
+    <script type="module">
+        import { supabase } from './supabase.js';
+
+        const form = document.getElementById('register-form');
+        const button = document.getElementById('register-button');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            button.disabled = true;
+            message.textContent = 'Бүртгэл үүсгэж байна...';
+
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const grade = document.getElementById('grade').value;
+            const classGroup = document.getElementById('class-group').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            try {
+                if (!email.endsWith('@orgil.edu.mn')) {
+                    throw new Error('Зөвхөн @orgil.edu.mn имэйл хаяг ашиглана уу.');
+                }
+
+                if (password.length < 8) {
+                    throw new Error('Нууц үг хамгийн багадаа 8 тэмдэгт байна.');
+                }
+
+                if (password !== confirmPassword) {
+                    throw new Error('Нууц үгүүд хоорондоо таарахгүй байна.');
+                }
+
+                const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                    options: {
+                        emailRedirectTo: `${window.location.origin}/student.html`,
+                        data: {
+                            full_name: fullName,
+                            school_name: 'Оргил олон улсын сургууль',
+                            grade: grade,
+                            class_group: classGroup
+                        }
+                    }
+                });
+
+                if (error) {
+                    throw error;
+                }
+                message.textContent='Бүртгэл үүсгэх хүсэлт амжилттай. Имэйлээ шалгаж, баталгаажуулах холбоос дээр дарна уу.';
+
+                // Баталгаажуулалт асаалттай үед профайлыг
+                // баталгаажуулах холбоосоор буцаж ирсний дараа үүсгэнэ.
+                if (data.session && data.user) {
+                    const { error: profileError } = await supabase
+                        .from('student_profiles')
+                        .upsert({
+                            user_id: data.user.id,
+                            full_name: fullName,
+                            school_name: 'Оргил олон улсын сургууль',
+                            grade,
+                            class_group: classGroup
+                        });
+
+                    if (profileError) {
+                        throw new Error(
+                            'Бүртгэл үүссэн боловч профайл хадгалагдсангүй. ' +
+                            profileError.message
+                        );
+                    }
+                }
+
+                message.textContent =
+                    'Бүртгэл үүсгэх хүсэлт амжилттай. ' +
+                    'Имэйлээ шалгаж, баталгаажуулах холбоос дээр дарна уу.';
+
+                form.reset();
+
+            } catch (error) {
+                message.textContent =
+                    error.message || 'Бүртгэл үүсгэхэд алдаа гарлаа.';
+            } finally {
+                button.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
