@@ -4,77 +4,443 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cambridge хөтөлбөрийн сургалтын материал, видео хичээл">
-    <title>ExamWeb | Сургалтын платформ</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Cambridge хөтөлбөрийн видео хичээл, сургалтын материал, дадлага ажил">
+    <meta name="theme-color" content="#111019">
+    <title>ExamWeb | Мэдлэгээ хөгжүүл</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <a class="logo" href="index.html">Exam<span>Web</span></a>
 
-        <nav>
+<header class="navbar">
+    <a class="logo" href="index.html">
+        <span class="logo-mark">E</span>
+        <span>Exam<span class="logo-accent">Web</span></span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="#home">Нүүр</a>
+        <a href="#courses">Хичээлүүд</a>
+        <a href="#latest">Шинэ хичээл</a>
+        <a href="#about">Бидний тухай</a>
+    </nav>
+
+    <div class="nav-user-actions">
+        <a class="nav-button" id="nav-login-button" href="./portal.html">
+    Суралцаж эхлэх <span>↗</span>
+</a>
+
+        <span id="nav-user-label" hidden>Сурагч</span>
+
+        <button
+            class="nav-button"
+            id="nav-logout-button"
+            type="button"
+            hidden
+        >
+            Гарах ↗
+        </button>
+    </div>
+</header>
+
+
+<main>
+    <section class="hero" id="home">
+        <div class="hero-glow"></div>
+
+        <div class="hero-content">
+            <div class="eyebrow">
+                <span class="live-dot"></span>
+                CAMBRIDGE LEARNING PLATFORM
+            </div>
+
+            <h1>
+                Өнөөдөр сур.<br>
+                <span>Маргааш бүтээ.</span>
+            </h1>
+
+            <p class="hero-text">
+                Шинэ мэдлэг, бодит чадвар, ирээдүйн боломж.
+                Cambridge хөтөлбөрийн хичээлүүдээ нэг дороос,
+                өөрийн хурдаар суралцаарай.
+            </p>
+
+            <div class="hero-actions">
+                <a class="button button-primary" href="#courses">
+                    Хичээлүүд үзэх <span>→</span>
+                </a>
+                <a class="button button-secondary" href="#latest">
+                    Шинэ хичээлүүд
+                </a>
+            </div>
+
+            <div class="hero-features">
+                <div>
+                    <strong>01</strong>
+                    <span>Видео хичээл</span>
+                </div>
+                <div>
+                    <strong>02</strong>
+                    <span>Сургалтын материал</span>
+                </div>
+                <div>
+                    <strong>03</strong>
+                    <span>Бие даан суралцах</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-art" aria-label="Суралцах боломж">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+
+            <div class="art-card art-card-back">
+                <span class="art-small-label">YOUR NEXT SKILL</span>
+                <div class="art-code">
+                    <span>01</span> Learn()<br>
+                    <span>02</span> Practice()<br>
+                    <span>03</span> Create()
+                </div>
+            </div>
+
+            <div class="art-card art-card-main">
+                <div class="art-window">
+                    <i></i><i></i><i></i>
+                    <span>EXAMWEB / LEARN</span>
+                </div>
+                <div class="art-symbol">&lt;/&gt;</div>
+                <div class="art-caption">
+                    <span>THINK. LEARN. BUILD.</span>
+                    <strong>Таны дараагийн<br>амжилт эндээс.</strong>
+                </div>
+                <div class="art-bottom">
+                    <span>LEARNING MODE</span>
+                    <span class="art-status">● ACTIVE</span>
+                </div>
+            </div>
+
+            <div class="floating-tag floating-top">
+                <span class="tag-icon">✦</span>
+                <span><strong>Шинэ мэдлэг</strong><small>Шинэ боломж</small></span>
+            </div>
+
+            <div class="floating-tag floating-bottom">
+                <span class="tag-icon tag-purple">▶</span>
+                <span><strong>Видео хичээл</strong><small>Өөрийн хурдаар</small></span>
+            </div>
+        </div>
+
+        <div class="hero-bottom">
+            <span>МЭДЛЭГЭЭ ӨРГӨЖҮҮЛЭХ ЦАГ БОЛЛОО</span>
+            <a href="#courses">ДООШ ҮЗЭХ ↓</a>
+        </div>
+    </section>
+
+    <section class="courses section-wrap" id="courses">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">EXPLORE & DISCOVER</p>
+                <h2>Суралцах <span>чиглэлүүд.</span></h2>
+                <p class="section-text">
+                    Өөрийн сонирхол, зорилгод тохирсон хичээлээ сонгоорой.
+                </p>
+            </div>
+            <span class="section-index">01 / LEARNING</span>
+        </div>
+
+        <div class="course-grid">
+            <a class="course-card computing-card" href="computing.html">
+                <div class="card-top">
+                    <span class="course-number">01</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <div class="course-icon icon-computing">&lt;/&gt;</div>
+                <div class="card-copy">
+                    <span class="card-category">TECHNOLOGY</span>
+                    <h3>Computing</h3>
+                    <p>Алгоритм, программчлал, компьютерийн систем болон мэдээллийн технологи.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Хичээл үзэх</span><span>→</span>
+                </div>
+            </a>
+
+            <a class="course-card maths-card" href="mathematics.html">
+                <div class="card-top">
+                    <span class="course-number">02</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <div class="course-icon icon-maths">∑</div>
+                <div class="card-copy">
+                    <span class="card-category">LOGIC & PROBLEM SOLVING</span>
+                    <h3>Mathematics</h3>
+                    <p>Математикийн ойлголт, бодолт, жишээ болон дасгал ажлууд.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Хичээл үзэх</span><span>→</span>
+                </div>
+            </a>
+
+            <a class="course-card web-card" href="web.html">
+                <div class="card-top">
+                    <span class="course-number">03</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <div class="course-icon icon-web">✳</div>
+                <div class="card-copy">
+                    <span class="card-category">DESIGN & DEVELOPMENT</span>
+                    <h3>Web Development</h3>
+                    <p>HTML, CSS, JavaScript ашиглан өөрийн вэбсайтаа бүтээж сур.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Хичээл үзэх</span><span>→</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="latest-section" id="latest">
+        <div class="section-wrap">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">FRESH FROM THE CLASSROOM</p>
+                    <h2>Шинэ <span>хичээлүүд.</span></h2>
+                    <p class="section-text">
+                        Админ самбарт нийтэлсэн Computing хичээлүүд энд автоматаар гарна.
+                    </p>
+                </div>
+                <a class="text-link" href="computing.html">Бүх хичээл →</a>
+            </div>
+
+            <p class="latest-message" id="latest-message">
+                Хичээлүүдийг ачаалж байна...
+            </p>
+            <div class="latest-grid" id="latest-courses"></div>
+        </div>
+    </section>
+
+    <section class="about-section section-wrap" id="about">
+        <div class="about-visual">
+            <span class="about-orb">E<span>W</span></span>
+            <span class="about-caption">LEARN SOMETHING NEW</span>
+        </div>
+        <div class="about-content">
+            <p class="eyebrow">OUR PURPOSE</p>
+            <h2>Мэдлэг бол<br><span>шинэ боломж.</span></h2>
+            <p>
+                ExamWeb нь Cambridge хөтөлбөрийн сурагчдад
+                хичээлээ давтах, видео үзэх, сургалтын материал
+                ашиглах боломж олгох зорилготой.
+            </p>
+            <a class="button button-primary" href="#courses">
+                Суралцаж эхлэх →
+            </a>
+        </div>
+    </section>
+
+    <section class="bottom-cta section-wrap">
+        <div>
+            <p class="eyebrow">YOUR LEARNING JOURNEY</p>
+            <h2>Дараагийн алхмаа<br>өнөөдөр эхлүүл.</h2>
+        </div>
+        <a class="button button-light" href="#courses">Хичээл сонгох ↗</a>
+    </section>
+</main>
+
+<footer class="footer">
+    <a class="logo" href="index.html">
+        <span class="logo-mark">E</span>
+        <span>Exam<span class="logo-accent">Web</span></span>
+    </a>
+    <p>© 2026 ExamWeb · Суралцах шинэ боломж</p>
+    <a href="#home">Дээш буцах ↑</a>
+</footer>
+
+<script type="module">
+    import { supabase } from './supabase.js';
+
+    const message = document.getElementById('latest-message');
+    const container = document.getElementById('latest-courses');
+
+    function safeUrl(value) {
+        if (!value) return null;
+        try {
+            const url = new URL(value);
+            return ['https:', 'http:'].includes(url.protocol)
+                ? url.href
+                : null;
+        } catch {
+            return null;
+        }
+    }
+
+    async function loadLatestCourses() {
+        try {
+            const { data, error } = await supabase
+                .from('courses')
+                .select('id, title, description, subject, video_url, pdf_url')
+                .eq('is_published', true)
+                .order('id', { ascending: false })
+                .limit(6);
+
+            if (error) throw error;
+
+            container.replaceChildren();
+
+            if (!data || data.length === 0) {
+                message.textContent =
+                    'Одоогоор нийтэлсэн хичээл алга. Шинэ хичээлүүд удахгүй энд гарна.';
+                return;
+            }
+
+            message.textContent = `${data.length} хичээл`;
+
+            for (const course of data) {
+                const card = document.createElement('article');
+                card.className = 'latest-card';
+
+                const top = document.createElement('div');
+                top.className = 'latest-card-top';
+
+                const badge = document.createElement('span');
+                badge.className = 'latest-badge';
+                badge.textContent = course.subject || 'Хичээл';
+
+                const number = document.createElement('span');
+                number.className = 'latest-number';
+                number.textContent = `#${course.id}`;
+
+                top.append(badge, number);
+
+                const icon = document.createElement('div');
+                icon.className = 'latest-icon';
+                icon.textContent = course.subject === 'Mathematics'
+                    ? '∑'
+                    : course.subject === 'Web Development'
+                        ? '✳'
+                        : '</>';
+                        //
+                        
+                // Хичээлд байгаа материалын тэмдэглэгээ
+                const courseMaterials = document.createElement('div');
+                    courseMaterials.className = 'latest-materials';
+
+                if (course.video_url) {
+    const videoTag = document.createElement('span');
+    videoTag.className = 'latest-material-tag';
+    videoTag.textContent = '▶ Видео хичээл';
+    courseMaterials.appendChild(videoTag);
+}
+
+if (course.pdf_url) {
+    const pdfTag = document.createElement('span');
+    pdfTag.className = 'latest-material-tag';
+    pdfTag.textContent = '▤ PDF материал';
+    courseMaterials.appendChild(pdfTag);
+}
+
+
+                const title = document.createElement('h3');
+                title.textContent = course.title || 'Нэргүй хичээл';
+
+                const description = document.createElement('p');
+                description.textContent =
+                    course.description || 'Энэ хичээлийн тайлбар удахгүй нэмэгдэнэ.';
+
+                const links = document.createElement('div');
+                links.className = 'latest-links';
+
+                const videoUrl = safeUrl(course.video_url);
+                const pdfUrl = safeUrl(course.pdf_url);
+
+                if (videoUrl) {
+                    const video = document.createElement('a');
+                    video.href = videoUrl;
+                    video.target = '_blank';
+                    video.rel = 'noopener noreferrer';
+                    video.textContent = '▶ Видео үзэх';
+                    links.append(video);
+                }
+
+                if (pdfUrl) {
+                    const pdf = document.createElement('a');
+                    pdf.href = pdfUrl;
+                    pdf.target = '_blank';
+                    pdf.rel = 'noopener noreferrer';
+                    pdf.textContent = 'PDF материал ↗';
+                    links.append(pdf);
+                }
+
+                if (!videoUrl && !pdfUrl) {
+                    const openCourse = document.createElement('a');
+                    openCourse.href = 'computing.html';
+                    openCourse.textContent = 'Хичээл рүү очих →';
+                    links.append(openCourse);
+                }
+
+                
+const materials = document.createElement('div');
+materials.className = 'latest-materials';
+
+if (course.video_url) {
+    const videoTag = document.createElement('span');
+    videoTag.className = 'latest-material-tag';
+    videoTag.textContent = '▶ Видео хичээл';
+    materials.appendChild(videoTag);
+}
+
+if (course.pdf_url) {
+    const pdfTag = document.createElement('span');
+    pdfTag.className = 'latest-material-tag';
+    pdfTag.textContent = '▤ PDF материал';
+    materials.appendChild(pdfTag);
+}
+
+if (materials.children.length > 0) {
+    card.append(top, icon, title, description, materials, links);
+} else {
+    card.append(top, icon, title, description, links);
+}
+
+container.append(card);
+
+            }
+        } catch (error) {
+            message.textContent =
+                'Хичээл ачаалж чадсангүй. Холболтоо шалгана уу.';
+            console.error('Supabase course loading error:', error);
+        }
+    }
+
+    loadLatestCourses();
+</script>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <a class="footer-logo" href="#home">
+            <span class="footer-logo-mark">E</span>
+            <span>Exam<span class="footer-logo-accent">Web</span></span>
+        </a>
+
+        <p class="footer-description">
+            Cambridge хөтөлбөрийн хичээлүүдийг нэг дороос,
+            өөрийн хурдаар суралцаарай.
+        </p>
+
+        <nav class="footer-links" aria-label="Хуудасны холбоосууд">
             <a href="#home">Нүүр</a>
             <a href="#courses">Хичээлүүд</a>
-            <a href="#about">Тухай</a>
+            <a href="#latest">Шинэ хичээл</a>
+            <a href="#about">Бидний тухай</a>
         </nav>
-    </header>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <p class="eyebrow">CAMBRIDGE LEARNING PLATFORM</p>
-                <h1>Мэдлэгээ хөгжүүл.<br><span>Ирээдүйгээ бүтээ.</span></h1>
-                <p class="hero-text">
-                    Cambridge хөтөлбөрийн хичээл, видео болон
-                    дадлага ажлуудыг нэг дороос суралцаарай.
-                </p>
-                <a class="button" href="#courses">Хичээлүүд үзэх →</a>
-            </div>
-            <div class="hero-icon">🎓</div>
-        </section>
-
-        <section class="courses" id="courses">
-            <p class="eyebrow">OUR LEARNING MATERIALS</p>
-            <h2>Хичээлийн сан</h2>
-            <p class="section-text">Судлах хичээлээ сонгоно уу.</p>
-
-            <div class="course-grid">
-                <article class="course-card">
-                    <div class="course-icon">💻</div>
-                    <h3>Computing</h3>
-                    <p>Алгоритм, программчлал, компьютерийн систем.</p>
-                    <a href="computing.html">Хичээл үзэх →</a>
-                </article>
-
-                <article class="course-card">
-                    <div class="course-icon">📐</div>
-                    <h3>Mathematics</h3>
-                    <p>Математикийн онол, жишээ болон дасгал.</p>
-                    <a href="mathematics.html">Хичээл үзэх →</a>
-                </article>
-
-                <article class="course-card">
-                    <div class="course-icon">🌐</div>
-                    <h3>Web Development</h3>
-                    <p>HTML, CSS болон JavaScript сурцгаая.</p>
-                    <a href="web.html">Хичээл үзэх →</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="about" id="about">
-            <h2>Суралцах шинэ боломж</h2>
-            <p>
-                Онолын мэдлэгээ бататгаж, жишээ ажил болон
-                видео хичээлээр бие даан суралцаарай.
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2026 ExamWeb · Learning for everyone</p>
-    </footer>
+        <div class="footer-bottom">
+            <span>© 2026 ExamWeb. Бүх эрх хуулиар хамгаалагдсан.</span>
+            <a href="#home">Дээш буцах ↑</a>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

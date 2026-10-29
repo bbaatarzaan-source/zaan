@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#100e18">
+    <meta name="description" content="ExamWeb сургалтын платформд нэвтрэх">
+    <title>Нэвтрэх | ExamWeb</title>
+    <style>
+        :root {
+            --bg: #100e18;
+            --panel: #191622;
+            --purple: #8b5cf6;
+            --purple-light: #c4b5fd;
+            --text: #f8f7ff;
+            --muted: #a49bb7;
+            --border: rgba(255,255,255,.1);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(ellipse at 12% 20%, #6535b52b, transparent 38%),
+                radial-gradient(ellipse at 85% 80%, #4d2ba52b, transparent 35%),
+                var(--bg);
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .topbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .brand-mark {
+            width: 39px;
+            height: 39px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: linear-gradient(140deg, #b59aff, #6336db);
+            box-shadow: 0 5px 25px #8557ff45;
+        }
+
+        .brand span:last-child span { color: var(--purple-light); }
+
+        .top-link {
+            color: #c4bbd4;
+            font-size: 12px;
+        }
+
+        .top-link:hover { color: white; }
+
+        .page {
+            min-height: 100vh;
+            max-width: 1300px;
+            margin: auto;
+            padding: 105px 6% 45px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 8%;
+        }
+
+        .intro { padding: 35px 0; }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--purple-light);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #a78bfa;
+            box-shadow: 0 0 12px #a78bfa;
+        }
+
+        .intro h1 {
+            margin: 24px 0 20px;
+            font-size: clamp(40px, 5.3vw, 68px);
+            line-height: 1.12;
+            letter-spacing: -3px;
+        }
+
+        .intro h1 span {
+            color: var(--purple-light);
+        }
+
+        .intro-text {
+            max-width: 440px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .visual {
+            position: relative;
+            max-width: 430px;
+            height: 245px;
+            margin-top: 40px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border: 1px solid #b49aff2a;
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at 50% 50%, #8154f62d, transparent 48%),
+                linear-gradient(140deg, #211a31, #17141f);
+        }
+
+        .visual::before,
+        .visual::after {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border: 1px solid #b49aff2c;
+            border-radius: 50%;
+        }
+
+        .visual::after {
+            width: 175px;
+            height: 175px;
+            border-style: dashed;
+            transform: rotate(25deg);
+        }
+
+        .visual-symbol {
+            z-index: 1;
+            color: #c5b3ff;
+            font-family: Consolas, monospace;
+            font-size: 72px;
+            font-weight: 800;
+            letter-spacing: -8px;
+            text-shadow: 0 0 45px #8557ff70;
+        }
+
+        .visual-label {
+            position: absolute;
+            bottom: 19px;
+            z-index: 2;
+            color: #a69ab9;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .feature-list {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #b7aec8;
+            font-size: 11px;
+        }
+
+        .feature-list span::before {
+            content: "✦";
+            margin-right: 7px;
+            color: var(--purple-light);
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 440px;
+            justify-self: end;
+            padding: 38px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 20px;
+            background: linear-gradient(145deg, #201c2bf2, #17141ff5);
+            box-shadow: 0 30px 100px #0005, inset 0 1px #ffffff08;
+            backdrop-filter: blur(20px);
+        }
+
+        .login-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 22px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #a78bfa40;
+            border-radius: 14px;
+            background: #8557ff20;
+            color: var(--purple-light);
+            font-size: 22px;
+        }
+
+        .login-box h2 {
+            margin: 0 0 9px;
+            font-size: 28px;
+            letter-spacing: -.8px;
+        }
+
+        .subtitle {
+            margin: 0 0 28px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        label {
+            display: block;
+            margin: 18px 0 8px;
+            color: #e4dff0;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .input-wrap { position: relative; }
+
+        input {
+            width: 100%;
+            min-height: 47px;
+            padding: 13px 14px;
+            outline: none;
+            border: 1px solid #ffffff18;
+            border-radius: 9px;
+            background: #100e18a8;
+            color: white;
+            font: inherit;
+            font-size: 13px;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        input::placeholder { color: #716980; }
+
+        input:focus {
+            border-color: #9b7aff;
+            box-shadow: 0 0 0 3px #8557ff20;
+        }
+
+        .password-input { padding-right: 70px; }
+
+        .show-password {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            padding: 5px;
+            border: 0;
+            background: transparent;
+            color: #b7a5e9;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .forgot-row {
+            margin-top: 13px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .forgot-link {
+            color: #c2adff;
+            font-size: 11px;
+        }
+
+        .forgot-link:hover { color: white; }
+
+        .login-button {
+            width: 100%;
+            min-height: 48px;
+            margin-top: 23px;
+            padding: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 0;
+            border-radius: 9px;
+            background: linear-gradient(100deg, #966cff, #7041e8);
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 9px 25px #7548f52c;
+            transition: filter .2s, transform .2s;
+        }
+
+        .login-button:hover:not(:disabled) {
+            filter: brightness(1.12);
+            transform: translateY(-1px);
+        }
+
+        .login-button:disabled {
+            opacity: .65;
+            cursor: wait;
+        }
+
+        #message {
+            min-height: 0;
+            margin: 14px 0 0;
+            color: #fbbfbd;
+            font-size: 12px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        #message:empty { display: none; }
+
+        #message.success { color: #86efac; }
+
+        .divider {
+            height: 1px;
+            margin: 25px 0 19px;
+            background: var(--border);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            color: #bcb2d0;
+            font-size: 11px;
+        }
+
+        .back-link:hover { color: white; }
+
+        .login-footnote {
+            margin-top: 25px;
+            color: #81788f;
+            font-size: 10px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 850px) {
+            .page {
+                grid-template-columns: 1fr;
+                max-width: 540px;
+                padding-top: 115px;
+                gap: 10px;
+            }
+
+            .intro { padding: 10px 0 20px; }
+
+            .intro h1 {
+                font-size: 42px;
+                letter-spacing: -2px;
+            }
+
+            .visual { display: none; }
+            .feature-list { margin-top: 20px; }
+            .login-box { justify-self: center; }
+        }
+
+        @media (max-width: 480px) {
+            .topbar { padding: 18px 5%; }
+            .brand { font-size: 18px; }
+            .top-link { font-size: 10px; }
+            .page { padding: 95px 5% 30px; }
+            .intro h1 { font-size: 36px; }
+            .intro-text { font-size: 12px; }
+            .login-box { padding: 27px 22px; }
+            .login-box h2 { font-size: 25px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <a class="brand" href="./index.html">
+        <span class="brand-mark">E</span>
+        <span>Exam<span>Web</span></span>
+    </a>
+    <a class="top-link" href="./index.html">← Нүүр хуудас</a>
+</header>
+
+<main class="page">
+    <section class="intro">
+        <p class="eyebrow"><span class="dot"></span> CAMBRIDGE LEARNING PLATFORM</p>
+        <h1>Мэдлэгээ хөгжүүл.<br><span>Ирээдүйгээ бүтээ.</span></h1>
+        <p class="intro-text">
+            Өөрийн боломжоо нээж, шинэ чадвар эзэмшин,
+            дараагийн амжилтынхаа эхлэлийг эндээс тавиарай.
+        </p>
+
+        <div class="visual" aria-hidden="true">
+            <div class="visual-symbol">&lt;/&gt;</div>
+            <span class="visual-label">THINK · LEARN · CREATE</span>
+        </div>
+
+        <div class="feature-list">
+            <span>Видео хичээл</span>
+            <span>Сургалтын материал</span>
+            <span>Бие даан суралцах</span>
+        </div>
+    </section>
+
+    <section class="login-box">
+        <div class="login-icon" aria-hidden="true">✦</div>
+        <h2>Тавтай морил!</h2>
+        <p class="subtitle">
+            Бүртгэлтэй имэйл болон нууц үгээ оруулж нэвтэрнэ үү.
+        </p>
+
+        <form id="login-form">
+            <label for="email">Имэйл хаяг</label>
+            <input
+                type="email"
+                id="email"
+                autocomplete="username"
+                placeholder="name@example.com"
+                required
+            >
+
+            <label for="password">Нууц үг</label>
+            <div class="input-wrap">
+                <input
+                    class="password-input"
+                    type="password"
+                    id="password"
+                    autocomplete="current-password"
+                    placeholder="Нууц үгээ оруулна уу"
+                    required
+                >
+                <button class="show-password" id="toggle-password"
+                    type="button" aria-label="Нууц үг харуулах">
+                    ХАРУУЛАХ
+                </button>
+            </div>
+
+            <div class="forgot-row">
+                <a class="forgot-link" href="./reset-password.html">
+                    Нууц үгээ мартсан уу?
+                </a>
+            </div>
+
+            <button class="login-button" id="login-button" type="submit">
+                Нэвтрэх <span aria-hidden="true">→</span>
+            </button>
+
+            <p id="message" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="divider"></div>
+
+        <a class="back-link" href="./portal.html">
+            ← нэвтрэх хэсэг сонгох
+        </a>
+
+        <p class="login-footnote">
+            Аюулгүй нэвтрэлт · ExamWeb Learning Platform
+        </p>
+    </section>
+</main>
+
+<script type="module">
+    import { supabase } from './supabase.js';
+
+    const form = document.getElementById('login-form');
+    const button = document.getElementById('login-button');
+    const message = document.getElementById('message');
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('toggle-password');
+
+    togglePassword.addEventListener('click', () => {
+        const showing = passwordInput.type === 'text';
+        passwordInput.type = showing ? 'password' : 'text';
+        togglePassword.textContent = showing ? 'ХАРУУЛАХ' : 'НУУХ';
+        togglePassword.setAttribute(
+            'aria-label',
+            showing ? 'Нууц үг харуулах' : 'Нууц үг нуух'
+        );
+    });
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        button.disabled = true;
+        message.className = '';
+        message.textContent = 'Нэвтэрч байна...';
+
+        const email = document.getElementById('email').value.trim();
+        const password = passwordInput.value;
+
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
+
+            if (error) throw error;
+
+            const { data: roleData, error: roleError } = await supabase
+                .from('user_roles')
+                .select('role')
+                .eq('user_id', data.user.id)
+                .maybeSingle();
+
+            if (roleError) throw roleError;
+
+            if (roleData?.role !== 'admin') {
+                await supabase.auth.signOut();
+                throw new Error('Энэ хэрэглэгч админ эрхгүй байна.');
+            }
+
+            window.location.href = './admin.html';
+        } catch (error) {
+            message.textContent =
+                error.message || 'Нэвтрэх үед алдаа гарлаа.';
+            button.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>

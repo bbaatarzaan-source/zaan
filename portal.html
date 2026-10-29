@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нэвтрэх | ZAAN Learning</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            color: #f8f7ff;
+            background:
+                radial-gradient(ellipse at 15% 15%, rgba(133, 87, 255, .14), transparent 38%),
+                radial-gradient(ellipse at 85% 85%, rgba(117, 66, 237, .10), transparent 35%),
+                #100f16;
+        }
+
+        .portal {
+            width: 100%;
+            max-width: 850px;
+            padding: 42px;
+            border: 1px solid rgba(167, 139, 250, .20);
+            border-radius: 24px;
+            background: linear-gradient(145deg, #231d33, #16141f);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, .35);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 35px;
+            color: #fff;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #b18aff, #7542ed);
+            box-shadow: 0 8px 25px rgba(117, 66, 237, .3);
+        }
+
+        .accent {
+            color: #b99aff;
+        }
+
+        .eyebrow {
+            margin: 0 0 12px;
+            color: #b99aff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(27px, 4vw, 36px);
+            text-align: center;
+        }
+
+        .subtitle {
+            margin: 14px 0 32px;
+            color: #aaa1bc;
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .choices {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .choice {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 230px;
+            padding: 26px;
+            border: 1px solid rgba(167, 139, 250, .18);
+            border-radius: 17px;
+            background: rgba(16, 15, 22, .55);
+            text-decoration: none;
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .choice:hover {
+            transform: translateY(-5px);
+            border-color: rgba(167, 139, 250, .55);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .22), 0 0 25px rgba(133, 87, 255, .08);
+        }
+
+        .choice-icon {
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(167, 139, 250, .25);
+            border-radius: 14px;
+            background: rgba(133, 87, 255, .12);
+            color: #c4b5fd;
+            font-size: 23px;
+        }
+
+        .choice h2 {
+            margin: 0 0 10px;
+            color: #f8f7ff;
+            font-size: 19px;
+        }
+
+        .choice p {
+            margin: 0;
+            color: #aaa1bc;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .choice-action {
+            margin-top: auto;
+            padding-top: 22px;
+            color: #c4b5fd;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #81778f;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .portal {
+                padding: 28px 20px;
+            }
+
+            .choices {
+                grid-template-columns: 1fr;
+            }
+
+            .choice {
+                min-height: 200px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .choice {
+                transition: none;
+            }
+
+            .choice:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="portal">
+        <div class="brand">
+            <span class="brand-mark">E</span>
+            <span>ZAAN<span class="accent">Learning</span></span>
+        </div>
+
+        <p class="eyebrow">WELCOME TO ZAAN LEARNING</p>
+        <h1>Нэвтрэх хэсгээ сонгоно уу</h1>
+        <p class="subtitle">
+            Өөрийн эрхээр нэвтэрч сургалтын системээ ашиглаарай.
+        </p>
+
+        <div class="choices">
+            <a class="choice" href="./login.html">
+                <span class="choice-icon">⚙</span>
+                <h2>Админ нэвтрэх</h2>
+                <p>Хичээл нэмэх, засах, нийтлэх болон сургалтын агуулгыг удирдах.</p>
+                <span class="choice-action">Админаар нэвтрэх →</span>
+            </a>
+
+            <a class="choice" href="./student.html">
+                <span class="choice-icon">✦</span>
+                <h2>Сурагч нэвтрэх</h2>
+                <p>Нэвтэрч хичээлүүд болон сургалтын материалдаа хандах.</p>
+                <span class="choice-action">Сурагчаар нэвтрэх →</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            © 2026 ZAANLearning
+        </div>
+    </main>
+</body>
+</html>

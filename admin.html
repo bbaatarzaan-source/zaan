@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ самбар | Zaan Learning</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 22px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        header h1 { margin: 0; font-size: 23px; }
+
+        header button {
+            background: #334155;
+            color: white;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+        .stat, .panel {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #0f172a0b;
+        }
+
+        .stat span { color: #64748b; font-size: 14px; }
+        .stat strong { display: block; font-size: 30px; margin-top: 8px; }
+
+        .panel { margin-bottom: 24px; }
+        h2 { margin-top: 0; font-size: 21px; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .field { min-width: 0; }
+        .full { grid-column: 1 / -1; }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font: inherit;
+            background: white;
+        }
+
+        textarea { min-height: 85px; resize: vertical; }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 7px;
+            padding: 11px 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .primary { background: #2563eb; color: white; }
+        .secondary { background: #e2e8f0; color: #1e293b; }
+        .danger { background: #fee2e2; color: #991b1b; }
+        .small { padding: 7px 10px; font-size: 13px; }
+
+        #message {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.5;
+            margin-top: 14px;
+        }
+
+        .course {
+            border: 1px solid #e2e8f0;
+            border-radius: 9px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+
+        .course h3 { margin: 0 0 8px; }
+        .course p { color: #64748b; overflow-wrap: anywhere; }
+        .course-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .status { font-size: 13px; font-weight: bold; }
+        .published { color: #15803d; }
+        .draft { color: #b45309; }
+        .muted { color: #64748b; }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full { grid-column: auto; }
+            header h1 { font-size: 19px; }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Zaan Learning — Админ самбар</h1>
+    <button id="logout-button" type="button">Гарах</button>
+</header>
+
+<main>
+    <section class="stats">
+        <div class="stat">
+            <span>Нийт хичээл</span>
+            <strong id="total-count">—</strong>
+        </div>
+        <div class="stat">
+            <span>Нийтэлсэн</span>
+            <strong id="published-count">—</strong>
+        </div>
+        <div class="stat">
+            <span>Ноорог</span>
+            <strong id="draft-count">—</strong>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2 id="form-title">Шинэ хичээл нэмэх</h2>
+
+        <form id="course-form">
+            <div class="form-grid">
+                <div class="field">
+                    <label for="title">Хичээлийн нэр *</label>
+                    <input id="title" required maxlength="200"
+                           placeholder="Жишээ: CPU Architecture">
+                </div>
+
+                <div class="field">
+                    <label for="subject">Хичээлийн төрөл *</label>
+                    <select id="subject" required>
+                        <option value="Computing">Computing</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Web Development">Web Development</option>
+                    </select>
+                </div>
+
+                <div class="field full">
+                    <label for="description">Тайлбар</label>
+                    <textarea id="description"
+                              placeholder="Хичээлийн товч тайлбар"></textarea>
+                </div>
+
+                <div class="field full">
+                    <label for="video-url">Видео холбоос</label>
+                    <input id="video-url" type="url"
+                           placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+
+                <div class="field full">
+                    <label for="pdf-url">PDF холбоос</label>
+                    <input id="pdf-url" type="url"
+                           placeholder="./materials/9626.pdf">
+                </div>
+
+                <div class="field">
+                    <label for="status-select">Төлөв</label>
+                    <select id="status-select">
+                        <option value="false">Ноорог — сурагчдад харагдахгүй</option>
+                        <option value="true">Нийтлэх — сурагчдад харагдана</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn primary" id="save-button" type="submit">
+                    Хичээл хадгалах
+                </button>
+                <button class="btn secondary" id="cancel-button"
+                        type="button" hidden>
+                    Болих
+                </button>
+            </div>
+
+            <p id="message" role="status" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Хичээлүүд</h2>
+
+        <div class="field">
+            <label for="filter">Төрлөөр шүүх</label>
+            <select id="filter">
+                <option value="all">Бүх хичээл</option>
+                <option value="Computing">Computing</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Web Development">Web Development</option>
+            </select>
+        </div>
+
+        <p id="list-message" class="muted">Хичээлүүдийг ачаалж байна...</p>
+        <div id="course-list"></div>
+    </section>
+</main>
+
+<script type="module">
+    import { supabase } from './supabase.js';
+
+    const $ = (id) => document.getElementById(id);
+
+    let editingId = null;
+    let courses = [];
+
+    function showMessage(message, isError = false) {
+        $('message').textContent = message;
+        $('message').style.color = isError ? '#b91c1c' : '#15803d';
+    }
+
+    function safeUrl(value) {
+        if (!value) return '';
+        try {
+            const url = new URL(value);
+            return ['https:', 'http:'].includes(url.protocol)
+                ? url.href
+                : '';
+        } catch {
+            return '';
+        }
+    }
+
+    async function checkAdmin() {
+        const { data: sessionData, error: sessionError } =
+            await supabase.auth.getSession();
+
+        if (sessionError) throw sessionError;
+
+        if (!sessionData.session) {
+            window.location.replace('./login.html');
+            return false;
+        }
+
+        const { data: roleData, error: roleError } = await supabase
+            .from('user_roles')
+            .select('role')
+            .eq('user_id', sessionData.session.user.id)
+            .maybeSingle();
+
+        if (roleError) throw roleError;
+
+        if (roleData?.role !== 'admin') {
+            await supabase.auth.signOut();
+            window.location.replace('./login.html');
+            return false;
+        }
+
+        return true;
+    }
+
+    function resetForm() {
+        editingId = null;
+        $('course-form').reset();
+        $('form-title').textContent = 'Шинэ хичээл нэмэх';
+        $('save-button').textContent = 'Хичээл хадгалах';
+        $('cancel-button').hidden = true;
+        showMessage('');
+    }
+
+    function updateStats() {
+        $('total-count').textContent = courses.length;
+        $('published-count').textContent =
+            courses.filter(course => course.is_published).length;
+        $('draft-count').textContent =
+            courses.filter(course => !course.is_published).length;
+    }
+
+    function renderCourses() {
+        const filter = $('filter').value;
+        const visible = filter === 'all'
+            ? courses
+            : courses.filter(course => course.subject === filter);
+
+        $('course-list').replaceChildren();
+
+        if (visible.length === 0) {
+            $('list-message').textContent = 'Одоогоор хичээл алга.';
+            return;
+        }
+
+        $('list-message').textContent = '';
+
+        for (const course of visible) {
+            const card = document.createElement('article');
+            card.className = 'course';
+
+            const heading = document.createElement('h3');
+            heading.textContent = course.title || '(Нэргүй хичээл)';
+
+            const status = document.createElement('span');
+            status.className = 'status ' +
+                (course.is_published ? 'published' : 'draft');
+            status.textContent = course.is_published
+                ? 'Нийтэлсэн'
+                : 'Ноорог';
+
+            const description = document.createElement('p');
+            description.textContent =
+                `${course.subject || ''} — ${course.description || 'Тайлбаргүй'}`;
+
+            card.append(heading, status, description);
+
+            const links = document.createElement('p');
+
+            for (const [label, rawUrl] of [
+                ['Видео', course.video_url],
+                ['PDF', course.pdf_url]
+            ]) {
+                const url = safeUrl(rawUrl);
+                if (!url) continue;
+
+                const link = document.createElement('a');
+                link.href = url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = label;
+                link.style.marginRight = '16px';
+                links.append(link);
+            }
+
+            card.append(links);
+
+            const actions = document.createElement('div');
+            actions.className = 'course-actions';
+
+            const editButton = document.createElement('button');
+            editButton.className = 'btn secondary small';
+            editButton.textContent = 'Засах';
+            editButton.addEventListener('click', () => editCourse(course.id));
+
+            const toggleButton = document.createElement('button');
+            toggleButton.className = 'btn secondary small';
+            toggleButton.textContent = course.is_published
+                ? 'Ноорог болгох'
+                : 'Нийтлэх';
+            toggleButton.addEventListener('click', () =>
+                togglePublished(course));
+
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'btn danger small';
+            deleteButton.textContent = 'Устгах';
+            deleteButton.addEventListener('click', () =>
+                deleteCourse(course.id, course.title));
+
+            actions.append(editButton, toggleButton, deleteButton);
+            card.append(actions);
+            $('course-list').append(card);
+        }
+    }
+
+    async function loadCourses() {
+        $('list-message').textContent = 'Хичээлүүдийг ачаалж байна...';
+
+        const { data, error } = await supabase
+            .from('courses')
+            .select('*')
+            .order('id', { ascending: false });
+
+        if (error) throw error;
+
+        courses = data || [];
+        updateStats();
+        renderCourses();
+    }
+
+    function editCourse(id) {
+        const course = courses.find(item => String(item.id) === String(id));
+        if (!course) return;
+
+        editingId = course.id;
+        $('title').value = course.title || '';
+        $('subject').value = course.subject || 'Computing';
+        $('description').value = course.description || '';
+        $('video-url').value = course.video_url || '';
+        $('pdf-url').value = course.pdf_url || '';
+        $('status-select').value = String(!!course.is_published);
+
+        $('form-title').textContent = 'Хичээл засах';
+        $('save-button').textContent = 'Өөрчлөлт хадгалах';
+        $('cancel-button').hidden = false;
+        showMessage('');
+
+        $('course-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function togglePublished(course) {
+        const { error } = await supabase
+            .from('courses')
+            .update({ is_published: !course.is_published })
+            .eq('id', course.id);
+
+        if (error) {
+            showMessage('Төлөв өөрчлөхөд алдаа гарлаа: ' + error.message, true);
+            return;
+        }
+
+        showMessage('Хичээлийн төлөв шинэчлэгдлээ.');
+        await loadCourses();
+    }
+
+    async function deleteCourse(id, title) {
+        if (!confirm(`"${title}" хичээлийг устгах уу? Энэ үйлдлийг буцаах боломжгүй.`)) {
+            return;
+        }
+
+        const { error } = await supabase
+            .from('courses')
+            .delete()
+            .eq('id', id);
+
+        if (error) {
+            showMessage('Устгахад алдаа гарлаа: ' + error.message, true);
+            return;
+        }
+
+        if (String(editingId) === String(id)) resetForm();
+
+        showMessage('Хичээл устгагдлаа.');
+        await loadCourses();
+    }
+
+    $('course-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const title = $('title').value.trim();
+        const description = $('description').value.trim();
+        const videoUrl = $('video-url').value.trim();
+        const pdfUrl = $('pdf-url').value.trim();
+
+        if (videoUrl && !safeUrl(videoUrl)) {
+            showMessage('Видео холбоос http:// эсвэл https://-ээр эхлэх ёстой.', true);
+            return;
+        }
+
+        if (pdfUrl && !safeUrl(pdfUrl)) {
+            showMessage('PDF холбоос http:// эсвэл https://-ээр эхлэх ёстой.', true);
+            return;
+        }
+
+        const record = {
+            title,
+            description: description || null,
+            subject: $('subject').value,
+            video_url: videoUrl || null,
+            pdf_url: pdfUrl || null,
+            is_published: $('status-select').value === 'true'
+        };
+
+        $('save-button').disabled = true;
+        showMessage('Хадгалж байна...');
+
+        try {
+            let result;
+
+            if (editingId !== null) {
+                result = await supabase
+                    .from('courses')
+                    .update(record)
+                    .eq('id', editingId);
+            } else {
+                result = await supabase
+                    .from('courses')
+                    .insert(record);
+            }
+
+            if (result.error) throw result.error;
+
+            showMessage(editingId !== null
+                ? 'Хичээлийн өөрчлөлт хадгалагдлаа.'
+                : 'Шинэ хичээл нэмэгдлээ.');
+
+            resetForm();
+            await loadCourses();
+        } catch (error) {
+            showMessage('Хадгалахад алдаа гарлаа: ' + error.message, true);
+        } finally {
+            $('save-button').disabled = false;
+        }
+    });
+
+    $('cancel-button').addEventListener('click', resetForm);
+
+    $('filter').addEventListener('change', renderCourses);
+
+    $('logout-button').addEventListener('click', async () => {
+        $('logout-button').disabled = true;
+
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            showMessage('Гарахад алдаа гарлаа: ' + error.message, true);
+            $('logout-button').disabled = false;
+            return;
+        }
+
+        window.location.replace('./login.html');
+    });
+
+    try {
+        const allowed = await checkAdmin();
+
+        if (allowed) {
+            await loadCourses();
+        }
+    } catch (error) {
+        $('list-message').textContent =
+            'Ачаалахад алдаа гарлаа: ' + error.message;
+    }
+</script>
+</body>
+</html>
