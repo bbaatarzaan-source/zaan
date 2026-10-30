@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Багшийн самбар | ZAAN Learning</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #100f16;
+            color: #f8f7ff;
+        }
+        header {
+            padding: 22px 6%;
+            border-bottom: 1px solid #332b46;
+            background: #1b1726;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand { font-size: 21px; font-weight: 800; }
+        .accent { color: #b99aff; }
+        main { max-width: 1100px; margin: 50px auto; padding: 0 24px; }
+        h1 { font-size: 30px; }
+        .muted { color: #aaa1bc; line-height: 1.7; }
+        .panel {
+            margin-top: 28px;
+            padding: 28px;
+            border: 1px solid #393047;
+            border-radius: 18px;
+            background: #211c2d;
+        }
+        button {
+            padding: 11px 18px;
+            border: 0;
+            border-radius: 9px;
+            background: #7542ed;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">ZAAN<span class="accent">Learning</span></div>
+        <button id="logout-button">Гарах</button>
+    </header>
+
+    <main>
+        <h1>Багшийн самбар</h1>
+        <p class="muted" id="welcome">Хэрэглэгчийн мэдээлэл ачаалж байна...</p>
+
+        <section class="panel">
+            <h2>Судалгаа, тайлан</h2>
+            <p class="muted">
+                Судалгаа үүсгэх, сурагчдын мэдээлэл боловсруулах,
+                график болон тайлан гаргах хэсэг.
+            </p>
+            <p class="muted">Энэ хэсгийг дараагийн алхмуудаар хөгжүүлнэ.</p>
+        </section>
+    </main>
+
+    <script type="module">
+        import { supabase } from './supabase.js';
+
+        async function checkTeacher() {
+            const { data: sessionData, error: sessionError } =
+                await supabase.auth.getSession();
+
+            if (sessionError) throw sessionError;
+
+            if (!sessionData.session) {
+                window.location.replace('./teacher-login.html');
+                return;
+            }
+
+            const user = sessionData.session.user;
+
+            const { data: roleData, error: roleError } = await supabase
+                .from('user_roles')
+                .select('role')
+                .eq('user_id', user.id)
+                .maybeSingle();
+
+            if (roleError) throw roleError;
+
+            if (roleData?.role !== 'teacher') {
+                await supabase.auth.signOut();
+                window.location.replace('./portal.html');
+                return;
+            }
+
+            document.getElementById('welcome').textContent =
+                'Тавтай морилно уу, ' + user.email;
+        }
+
+        document.getElementById('logout-button').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.replace('./portal.html');
+        });
+
+        checkTeacher().catch(error => {
+            document.getElementById('welcome').textContent =
+                'Алдаа: ' + error.message;
+        });
+    </script>
+</body>
+</html>

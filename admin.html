@@ -216,500 +216,833 @@
             }
         }
     </style>
-<style>
-    :root {
-        --primary: #2563eb;
-        --primary-dark: #1d4ed8;
-        --primary-light: #eff6ff;
-        --sidebar: #123b73;
-        --text: #172554;
-        --muted: #64748b;
-        --border: #e2e8f0;
-        --surface: #ffffff;
-        --background: #f5f8ff;
-        --success: #15803d;
-        --warning: #b45309;
-        --danger: #dc2626;
-        --radius: 16px;
-        --shadow: 0 8px 28px rgba(30, 64, 175, 0.06);
-    }
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #eff6ff;
+            --sidebar: #123b73;
+            --text: #172554;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --surface: #ffffff;
+            --background: #f5f8ff;
+            --success: #15803d;
+            --warning: #b45309;
+            --danger: #dc2626;
+            --radius: 16px;
+            --shadow: 0 8px 28px rgba(30, 64, 175, 0.06);
+        }
 
-    * {
-        box-sizing: border-box;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    html {
-        scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-        margin: 0;
-        font-family: "Inter", "Noto Sans", "Segoe UI", Arial, sans-serif;
-        background: var(--background);
-        color: var(--text);
-        line-height: 1.6;
-    }
-
-    header {
-        min-height: 76px;
-        padding: 18px max(24px, calc((100% - 1400px) / 2));
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        flex-wrap: wrap;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-
-    header h1 {
-        margin: 0;
-        color: var(--sidebar);
-        font-size: 23px;
-        font-weight: 800;
-        letter-spacing: -0.7px;
-    }
-
-    header button {
-        background: var(--primary-light);
-        color: var(--primary-dark);
-        border: 1px solid #bfdbfe;
-        padding: 10px 18px;
-        border-radius: 10px;
-        font: inherit;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    header button:hover {
-        background: #dbeafe;
-    }
-
-    main {
-        max-width: 1400px;
-        margin: 32px auto;
-        padding: 0 24px;
-    }
-
-    .stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
-        margin-bottom: 26px;
-    }
-
-    .stat,
-    .panel {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-    }
-
-    .stat {
-        padding: 24px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .stat::before {
-        content: "";
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: 4px;
-        background: var(--primary);
-    }
-
-    .stat span {
-        color: var(--muted);
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    .stat strong {
-        display: block;
-        color: var(--sidebar);
-        font-size: 34px;
-        line-height: 1.2;
-        margin-top: 10px;
-        font-weight: 800;
-    }
-
-    .panel {
-        padding: 28px;
-        margin-bottom: 26px;
-        min-width: 0;
-    }
-
-    h2 {
-        margin: 0 0 10px;
-        font-size: 22px;
-        line-height: 1.4;
-        color: var(--sidebar);
-        letter-spacing: -0.4px;
-    }
-
-    h3 {
-        color: var(--text);
-    }
-
-    .muted {
-        color: var(--muted);
-    }
-
-    .form-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-    }
-
-    .field {
-        min-width: 0;
-    }
-
-    .full {
-        grid-column: 1 / -1;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 700;
-        font-size: 14px;
-        color: #334155;
-    }
-
-    input,
-    textarea,
-    select {
-        width: 100%;
-        min-width: 0;
-        padding: 12px 14px;
-        border: 1px solid #cbd5e1;
-        border-radius: 10px;
-        font: inherit;
-        font-size: 14px;
-        color: var(--text);
-        background: #fff;
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-    }
-
-    textarea {
-        min-height: 110px;
-        resize: vertical;
-    }
-
-    .actions,
-    .course-actions {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 18px;
-    }
-
-    .btn {
-        border: 1px solid transparent;
-        border-radius: 10px;
-        padding: 11px 18px;
-        cursor: pointer;
-        font: inherit;
-        font-size: 14px;
-        font-weight: 700;
-        transition: background 0.2s, transform 0.2s;
-    }
-
-    .btn:hover {
-        transform: translateY(-1px);
-    }
-
-    .btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none;
-    }
-
-    .primary {
-        background: var(--primary);
-        color: white;
-    }
-
-    .primary:hover {
-        background: var(--primary-dark);
-    }
-
-    .secondary {
-        background: #eff6ff;
-        color: #1d4ed8;
-        border-color: #bfdbfe;
-    }
-
-    .secondary:hover {
-        background: #dbeafe;
-    }
-
-    .danger {
-        background: #fef2f2;
-        color: #b91c1c;
-        border-color: #fecaca;
-    }
-
-    .danger:hover {
-        background: #fee2e2;
-    }
-
-    .small {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-
-    #message {
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-        line-height: 1.6;
-        margin-top: 14px;
-    }
-
-    #student-list-message,
-    #list-message {
-        margin: 16px 0;
-        font-size: 14px;
-    }
-
-    .course {
-        border: 1px solid var(--border);
-        background: #fff;
-        border-radius: 13px;
-        padding: 20px;
-        margin-top: 14px;
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .course:hover {
-        border-color: #bfdbfe;
-        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06);
-    }
-
-    .course h3 {
-        margin: 0 0 8px;
-        font-size: 17px;
-    }
-
-    .course p {
-        color: var(--muted);
-        overflow-wrap: anywhere;
-    }
-
-    .course a {
-        color: var(--primary-dark);
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-    .course a:hover {
-        text-decoration: underline;
-    }
-
-    .status {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 800;
-        padding: 4px 9px;
-        border-radius: 999px;
-    }
-
-    .published {
-        color: #166534;
-        background: #dcfce7;
-    }
-
-    .draft {
-        color: #92400e;
-        background: #fef3c7;
-    }
-
-    .student-filters {
-        display: grid;
-        grid-template-columns: minmax(220px, 2fr) repeat(2, minmax(140px, 1fr));
-        gap: 12px;
-        margin: 22px 0;
-    }
-
-    #student-list,
-    #course-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-        gap: 14px;
-        align-items: start;
-    }
-
-    #student-list .course,
-    #course-list .course {
-        margin-top: 0;
-    }
-
-    #filter {
-        max-width: 400px;
-    }
-
-    @media (max-width: 760px) {
-        main {
-            margin: 22px auto;
-            padding: 0 14px;
+        body {
+            margin: 0;
+            font-family: "Inter", "Noto Sans", "Segoe UI", Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
         }
 
         header {
-            padding: 16px;
+            min-height: 76px;
+            padding: 18px max(24px, calc((100% - 1400px) / 2));
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         header h1 {
-            font-size: 19px;
+            margin: 0;
+            color: var(--sidebar);
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -0.7px;
+        }
+
+        header button {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border: 1px solid #bfdbfe;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        header button:hover {
+            background: #dbeafe;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 32px auto;
+            padding: 0 24px;
         }
 
         .stats {
-            grid-template-columns: 1fr;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            margin-bottom: 26px;
+        }
+
+        .stat,
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
         .stat {
-            padding: 19px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 4px;
+            background: var(--primary);
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .stat strong {
-            font-size: 28px;
+            display: block;
+            color: var(--sidebar);
+            font-size: 34px;
+            line-height: 1.2;
+            margin-top: 10px;
+            font-weight: 800;
         }
 
         .panel {
-            padding: 20px 16px;
+            padding: 28px;
+            margin-bottom: 26px;
+            min-width: 0;
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 22px;
+            line-height: 1.4;
+            color: var(--sidebar);
+            letter-spacing: -0.4px;
+        }
+
+        h3 {
+            color: var(--text);
+        }
+
+        .muted {
+            color: var(--muted);
         }
 
         .form-grid {
-            grid-template-columns: 1fr;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .field {
+            min-width: 0;
         }
 
         .full {
-            grid-column: auto;
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            min-width: 0;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font: inherit;
+            font-size: 14px;
+            color: var(--text);
+            background: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .actions,
+        .course-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .btn {
+            border: 1px solid transparent;
+            border-radius: 10px;
+            padding: 11px 18px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .secondary {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-color: #bfdbfe;
+        }
+
+        .secondary:hover {
+            background: #dbeafe;
+        }
+
+        .danger {
+            background: #fef2f2;
+            color: #b91c1c;
+            border-color: #fecaca;
+        }
+
+        .danger:hover {
+            background: #fee2e2;
+        }
+
+        .small {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        #message {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.6;
+            margin-top: 14px;
+        }
+
+        #student-list-message,
+        #list-message {
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .course {
+            border: 1px solid var(--border);
+            background: #fff;
+            border-radius: 13px;
+            padding: 20px;
+            margin-top: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .course:hover {
+            border-color: #bfdbfe;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06);
+        }
+
+        .course h3 {
+            margin: 0 0 8px;
+            font-size: 17px;
+        }
+
+        .course p {
+            color: var(--muted);
+            overflow-wrap: anywhere;
+        }
+
+        .course a {
+            color: var(--primary-dark);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .course a:hover {
+            text-decoration: underline;
+        }
+
+        .status {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 9px;
+            border-radius: 999px;
+        }
+
+        .published {
+            color: #166534;
+            background: #dcfce7;
+        }
+
+        .draft {
+            color: #92400e;
+            background: #fef3c7;
         }
 
         .student-filters {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: minmax(220px, 2fr) repeat(2, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 22px 0;
         }
 
         #student-list,
         #course-list {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 14px;
+            align-items: start;
         }
-    }
-    
-    .admin-layout {
-        max-width: 1500px;
-        margin: 0 auto;
-        padding: 24px;
-        display: grid;
-        grid-template-columns: 230px minmax(0, 1fr);
-        gap: 24px;
-        align-items: start;
-    }
 
-    .sidebar {
-        background: #123b73;
-        color: #ffffff;
-        border-radius: 16px;
-        padding: 24px 14px;
-        position: sticky;
-        top: 100px;
-    }
+        #student-list .course,
+        #course-list .course {
+            margin-top: 0;
+        }
 
-    .sidebar-brand {
-        padding: 0 12px 22px;
-        border-bottom: 1px solid #355887;
-        margin-bottom: 18px;
-    }
+        #filter {
+            max-width: 400px;
+        }
 
-    .sidebar-brand strong {
-        display: block;
-        font-size: 21px;
-        letter-spacing: 1px;
-    }
+        @media (max-width: 760px) {
+            main {
+                margin: 22px auto;
+                padding: 0 14px;
+            }
 
-    .sidebar-brand span {
-        color: #bfdbfe;
-        font-size: 11px;
-        letter-spacing: 2px;
-    }
+            header {
+                padding: 16px;
+            }
 
-    .sidebar-label {
-        color: #bfdbfe;
-        font-size: 11px;
-        text-transform: uppercase;
-        padding: 8px 12px;
-    }
+            header h1 {
+                font-size: 19px;
+            }
 
-    .sidebar a {
-        display: block;
-        color: #e2e8f0;
-        text-decoration: none;
-        padding: 12px;
-        margin: 4px 0;
-        border-radius: 9px;
-        font-size: 14px;
-        font-weight: 600;
-        transition: 0.2s;
-    }
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
 
-    .sidebar a:hover,
-    .sidebar a.active {
-        background: #2563eb;
-        color: #ffffff;
-    }
+            .stat {
+                padding: 19px;
+            }
 
-    .admin-content {
-        min-width: 0;
-    }
+            .stat strong {
+                font-size: 28px;
+            }
 
-    .admin-content main {
-        max-width: none;
-        margin: 0;
-        padding: 0;
-    }
+            .panel {
+                padding: 20px 16px;
+            }
 
-    @media (max-width: 850px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .student-filters {
+                grid-template-columns: 1fr;
+            }
+
+            #student-list,
+            #course-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .admin-layout {
-            grid-template-columns: 1fr;
-            padding: 16px;
-            gap: 16px;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 230px minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
         }
 
         .sidebar {
-            position: static;
-            padding: 14px;
+            background: #123b73;
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 24px 14px;
+            position: sticky;
+            top: 100px;
         }
 
         .sidebar-brand {
-            padding-bottom: 12px;
-            margin-bottom: 10px;
+            padding: 0 12px 22px;
+            border-bottom: 1px solid #355887;
+            margin-bottom: 18px;
+        }
+
+        .sidebar-brand strong {
+            display: block;
+            font-size: 21px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-brand span {
+            color: #bfdbfe;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .sidebar-label {
+            color: #bfdbfe;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 8px 12px;
         }
 
         .sidebar a {
-            display: inline-block;
-            margin: 3px;
+            display: block;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 12px;
+            margin: 4px 0;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
         }
-    }
 
-</style>
+        .menu-group {
+            margin-bottom: 6px;
+        }
 
+        .menu-group summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 12px 14px;
+            border-radius: 9px;
+            color: #dbeafe;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.2s;
+        }
+
+        .menu-group summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .menu-group summary::after {
+            content: "⌄";
+            font-size: 17px;
+            transition: transform 0.2s;
+        }
+
+        .menu-group[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .menu-group summary:hover {
+            background: #244a80;
+        }
+
+        .submenu {
+            padding: 5px 0 5px 15px;
+            margin-left: 12px;
+            border-left: 2px solid #42658f;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 10px 12px;
+            margin: 3px 0;
+            border-radius: 7px;
+            color: #cbd5e1;
+            font-size: 13px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .submenu a:hover {
+            background: #244a80;
+            color: white;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        .admin-content {
+            min-width: 0;
+        }
+
+        .admin-content main {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 850px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .sidebar {
+                position: static;
+                padding: 14px;
+            }
+
+            .sidebar-brand {
+                padding-bottom: 12px;
+                margin-bottom: 10px;
+            }
+
+            .sidebar a {
+                display: inline-block;
+                margin: 3px;
+            }
+        }
+
+        .permission-modal[hidden] {
+            display: none !important;
+        }
+
+        .permission-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+        }
+
+        .permission-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, .55);
+            backdrop-filter: blur(3px);
+        }
+
+        .permission-modal-box {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 25px 70px rgba(15, 23, 42, .25);
+            overflow: hidden;
+            animation: modalAppear .2s ease;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .permission-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .permission-modal-header h2 {
+            margin: 0;
+            font-size: 19px;
+        }
+
+        .modal-close {
+            border: 0;
+            background: transparent;
+            color: #64748b;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        .permission-modal-body {
+            padding: 24px;
+        }
+
+        .teacher-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .teacher-avatar {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: #dbeafe;
+            color: #2563eb;
+            font-size: 23px;
+        }
+
+        .teacher-info strong {
+            color: #1e293b;
+        }
+
+        .teacher-info p {
+            margin: 5px 0 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .permission-details {
+            padding: 17px;
+            border-radius: 11px;
+            background: #f8fafc;
+        }
+
+        .permission-details small {
+            color: #64748b;
+            font-weight: bold;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .permission-details h3 {
+            margin: 10px 0 18px;
+            font-size: 16px;
+        }
+
+        .permission-status {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+
+        .permission-status span {
+            color: #64748b;
+        }
+
+        .modal-note {
+            margin: 20px 0 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .permission-modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 18px 24px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Mobile responsive navigation */
+        @media (max-width: 768px) {
+
+            .admin-layout {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-width: 100%;
+                min-height: auto;
+                height: auto;
+                border-radius: 0 0 18px 18px;
+                padding: 18px;
+            }
+
+            .admin-content {
+                width: 100%;
+                min-width: 0;
+                padding: 12px;
+            }
+
+            main {
+                width: 100%;
+                min-width: 0;
+            }
+
+            main>section {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .student-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .student-filters {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .student-filters input,
+            .student-filters select {
+                width: 100%;
+            }
+        }
+
+        /* Mobile hamburger menu */
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+                width: 100%;
+                padding: 13px 16px;
+                margin-bottom: 15px;
+                border: none;
+                border-radius: 10px;
+                background: #2563eb;
+                color: white;
+                font-size: 17px;
+                font-weight: 700;
+                text-align: left;
+                cursor: pointer;
+            }
+
+            .sidebar.mobile-menu-closed> :not(#mobile-menu-toggle) {
+                display: none !important;
+            }
+
+            .sidebar.mobile-menu-closed {
+                min-height: auto;
+                height: auto;
+                padding: 12px;
+            }
+        }
+
+        /* iPad and tablet navigation */
+        @media (min-width: 769px) and (max-width: 1180px) {
+
+            .mobile-menu-toggle {
+                display: block;
+                width: 100%;
+                padding: 13px 16px;
+                margin-bottom: 15px;
+                border: none;
+                border-radius: 10px;
+                background: #2563eb;
+                color: white;
+                font-size: 17px;
+                font-weight: 700;
+                text-align: left;
+                cursor: pointer;
+            }
+
+            .sidebar.mobile-menu-closed> :not(#mobile-menu-toggle) {
+                display: none !important;
+            }
+
+            .sidebar.mobile-menu-closed {
+                min-height: auto;
+                height: auto;
+                padding: 12px;
+            }
+        }
+
+        /* Tablet and mobile menu toggle */
+        @media (max-width: 1180px) {
+            .sidebar.mobile-menu-closed> :not(#mobile-menu-toggle) {
+                display: none !important;
+            }
+
+            .sidebar.mobile-menu-closed {
+                min-height: auto !important;
+                height: auto !important;
+                padding: 12px !important;
+            }
+        }
+
+        /* ZAAN universal menu close */
+        .sidebar.mobile-menu-closed {
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 12px !important;
+        }
+
+        .sidebar.mobile-menu-closed>*:not(#mobile-menu-toggle) {
+            display: none !important;
+        }
+
+        .sidebar.mobile-menu-closed #mobile-menu-toggle {
+            display: block !important;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 
 <body>
@@ -718,548 +1051,2018 @@
         <button id="logout-button" type="button">Гарах</button>
     </header>
 
-<div class="admin-layout">
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <strong>ZAAN</strong>
-            <span>LEARNING PLATFORM</span>
-        </div>
-
-        <div class="sidebar-label">Үндсэн цэс</div>
-
-        <a href="#dashboard" class="active">▦ Самбар</a>
-        <a href="#courses">▤ Хичээлүүд</a>
-        <a href="#students">♙ Сурагчид</a>
-         <a href="#teachers">♙Багш нар</a>
-    </aside>
-
-    <div class="admin-content">
-
-    <main>
-        <section class="stats">
-            <div class="stat">
-                <span>Нийт хичээл</span>
-                <strong id="total-count">—</strong>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <button type="button" id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Цэс нээх"
+                aria-expanded="false">
+                ☰ Цэс
+            </button>
+            <div class="sidebar-brand">
+                <strong>ZAAN</strong>
+                <span>LEARNING PLATFORM</span>
             </div>
-            <div class="stat">
-                <span>Нийтэлсэн</span>
-                <strong id="published-count">—</strong>
-            </div>
-            <div class="stat">
-                <span>Ноорог</span>
-                <strong id="draft-count">—</strong>
-            </div>
-        </section>
 
-        <section class="panel">
-            <h2 id="form-title">Шинэ хичээл нэмэх</h2>
 
-            <form id="course-form">
-                <div class="form-grid">
-                    <div class="field">
-                        <label for="title">Хичээлийн нэр *</label>
-                        <input id="title" required maxlength="200" placeholder="Жишээ: CPU Architecture">
+            <div class="sidebar-label">ҮНДСЭН ЦЭС</div>
+
+            <a href="#dashboard" class="active">
+                ▦ Ерөнхий самбар
+            </a>
+
+            <div class="sidebar-label">СУРГАЛТЫН УДИРДЛАГА</div>
+
+            <details class="menu-group">
+                <summary>📚 Хичээлийн удирдлага</summary>
+                <div class="submenu">
+                    <a href="#course-list-panel">Хичээлийн жагсаалт</a>
+                    <a href="#course-form-panel">Хичээл нэмэх</a>
+                </div>
+            </details>
+
+            <a href="#students">🎓 Сурагчдын удирдлага</a>
+
+            <div class="sidebar-label">БАЙГУУЛЛАГЫН УДИРДЛАГА</div>
+
+            <details class="menu-group">
+                <summary>🏫 Сургуулийн удирдлага</summary>
+                <div class="submenu">
+                    <a href="#school-registration">Сургууль бүртгэх</a>
+                </div>
+            </details>
+
+            <details class="menu-group">
+                <summary>👨‍🏫 Багшийн удирдлага</summary>
+                <div class="submenu">
+                    <a href="#teachers">Багшийн эрхийн тохиргоо</a>
+                    <a href="#teacher-classes">Анги хариуцуулах</a>
+                </div>
+            </details>
+
+
+
+        </aside>
+
+        <div class="admin-content">
+
+            <main>
+                <section class="stats" id="dashboard">
+                    <div class="stat">
+                        <span>Нийт хичээл</span>
+                        <strong id="total-count">—</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Нийтэлсэн</span>
+                        <strong id="published-count">—</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Ноорог</span>
+                        <strong id="draft-count">—</strong>
+                    </div>
+                </section>
+
+                <section class="panel" id="course-form-panel">
+                    <h2 id="form-title">Шинэ хичээл нэмэх</h2>
+
+                    <form id="course-form">
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="title">Хичээлийн нэр *</label>
+                                <input id="title" required maxlength="200" placeholder="Жишээ: CPU Architecture">
+                            </div>
+
+                            <div class="field">
+                                <label for="subject">Хичээлийн төрөл *</label>
+                                <select id="subject" required>
+                                    <option value="Computing">Computing</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Web Development">Web Development</option>
+                                </select>
+                            </div>
+
+                            <div class="field full">
+                                <label for="description">Тайлбар</label>
+                                <textarea id="description" placeholder="Хичээлийн товч тайлбар"></textarea>
+                            </div>
+
+                            <div class="field full">
+                                <label for="video-url">Видео холбоос</label>
+                                <input id="video-url" type="url" placeholder="https://www.youtube.com/watch?v=...">
+                            </div>
+
+                            <div class="field full">
+                                <label for="pdf-url">PDF холбоос</label>
+                                <input id="pdf-url" type="url" placeholder="./materials/9626.pdf">
+                            </div>
+
+                            <div class="field">
+                                <label for="status-select">Төлөв</label>
+                                <select id="status-select">
+                                    <option value="false">Ноорог — сурагчдад харагдахгүй</option>
+                                    <option value="true">Нийтлэх — сурагчдад харагдана</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <button class="btn primary" id="save-button" type="submit">
+                                Хичээл хадгалах
+                            </button>
+                            <button class="btn secondary" id="cancel-button" type="button" hidden>
+                                Болих
+                            </button>
+                        </div>
+
+                        <p id="message" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+
+                <section class="panel" id="students">
+                    <h2>Сурагчдын удирдлага</h2>
+                    <p class="muted">
+                        ZAAN Learning платформд бүртгүүлсэн сурагчдын мэдээлэл.
+                    </p>
+
+                    <div class="panel student-create-panel">
+                        <h3>＋ Шинэ сурагч бүртгэх</h3>
+                        <p class="muted">Сурагчийн үндсэн болон холбоо барих мэдээллийг оруулна.</p>
+
+                        <div class="student-form-grid">
+
+                            <div class="field">
+                                <label for="new-student-last-name">Овог *</label>
+                                <input id="new-student-last-name" type="text" placeholder="Сурагчийн овог">
+                            </div>
+
+                            <div class="field">
+                                <label for="new-student-first-name">Нэр *</label>
+                                <input id="new-student-first-name" type="text" placeholder="Сурагчийн нэр">
+                            </div>
+
+                            <div class="field">
+                                <label for="new-student-code">Сурагчийн код *</label>
+                                <input id="new-student-code" type="text" placeholder="Жишээ: ORG-001">
+                            </div>
+
+                            <div class="field">
+                                <label for="new-student-gender">Хүйс *</label>
+                                <select id="new-student-gender">
+                                    <option value="">Сонгох</option>
+                                    <option value="male">Эрэгтэй</option>
+                                    <option value="female">Эмэгтэй</option>
+                                    <option value="other">Бусад</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="new-student-school">Сургууль *</label>
+                                <select id="new-student-school">
+                                    <option value="">Сургууль сонгох</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="new-student-grade">Анги *</label>
+                                <select id="new-student-grade">
+                                    <option value="">Анги сонгох</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="new-student-group">Бүлэг *</label>
+                                <select id="new-student-group">
+                                    <option value="">Бүлэг сонгох</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="new-student-phone">Сурагчийн утас</label>
+                                <input id="new-student-phone" type="tel" placeholder="Утасны дугаар">
+                            </div>
+
+                            <div class="field">
+                                <label for="new-parent-phone">Эцэг эхийн утас</label>
+                                <input id="new-parent-phone" type="tel" placeholder="Утасны дугаар">
+                            </div>
+
+                            <div class="field">
+                                <label for="new-parent-workplace">Эцэг эхийн ажилладаг байгууллага</label>
+                                <input id="new-parent-workplace" type="text" placeholder="Байгууллагын нэр">
+                            </div>
+
+                            <div class="field full-width">
+                                <label for="new-student-address">Гэрийн хаяг</label>
+                                <input id="new-student-address" type="text" placeholder="Гэрийн хаяг">
+                            </div>
+
+                        </div>
+
+                        <button type="button" id="save-new-student-btn" class="btn primary">
+                            Сурагч бүртгэх
+                        </button>
+
+                        <p id="new-student-message" class="muted"></p>
+                    </div>
+                    <div class="panel" id="student-import-panel">
+
+                        <h3>Excel файлаас сурагч импортлох</h3>
+
+                        <p class="muted">
+                            Сурагчдын мэдээллийг Excel файлаас
+                            олноор бүртгэх боломжтой.
+                        </p>
+                        <div class="field">
+                            <label for="student-import-school">
+                                Сургууль сонгох *
+                            </label>
+
+                            <select id="student-import-school">
+                                <option value="">Сургууль сонгоно уу</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="student-excel-file">
+                                Excel файл сонгох (.xlsx)
+                            </label>
+<button
+    type="button"
+    id="download-student-template"
+    class="btn"
+>
+    📥 Excel загвар татах
+</button>
+                            <input type="file" id="student-excel-file" accept=".xlsx">
+                        </div>
+
+                        <button type="button" id="preview-student-import-btn" class="btn primary">
+                            Файлыг шалгах
+                        </button>
+
+                        <p id="student-import-message" class="muted"></p>
+
+                        <div id="student-import-preview"></div>
+                    </div>
+                    <div class="student-filters">
+                        <input type="text" id="student-search" placeholder="Сурагчийн нэрээр хайх...">
+
+                        <select id="student-grade-filter">
+                            <option value="">Бүх анги</option>
+                            <option value="6">6-р анги</option>
+                            <option value="7">7-р анги</option>
+                            <option value="8">8-р анги</option>
+                            <option value="9">9-р анги</option>
+                            <option value="10">10-р анги</option>
+                            <option value="11">11-р анги</option>
+                            <option value="12">12-р анги</option>
+                        </select>
+
+                        <select id="student-class-filter">
+                            <option value="">Бүх бүлэг</option>
+                            <option value="1">1-р бүлэг</option>
+                            <option value="2">2-р бүлэг</option>
+                            <option value="3">3-р бүлэг</option>
+                        </select>
                     </div>
 
+                    <p id="student-list-message" class="muted">
+                        Сурагчдын мэдээллийг ачаалж байна...
+                    </p>
+
+                    <div id="student-list"></div>
+                </section>
+
+                <section class="panel" id="course-list-panel">
+                    <h2>Хичээлүүд</h2>
+
                     <div class="field">
-                        <label for="subject">Хичээлийн төрөл *</label>
-                        <select id="subject" required>
+                        <label for="filter">Төрлөөр шүүх</label>
+                        <select id="filter">
+                            <option value="all">Бүх хичээл</option>
                             <option value="Computing">Computing</option>
                             <option value="Mathematics">Mathematics</option>
                             <option value="Web Development">Web Development</option>
                         </select>
                     </div>
 
-                    <div class="field full">
-                        <label for="description">Тайлбар</label>
-                        <textarea id="description" placeholder="Хичээлийн товч тайлбар"></textarea>
+                    <p id="list-message" class="muted">Хичээлүүдийг ачаалж байна...</p>
+                    <div id="course-list"></div>
+                </section>
+
+                <section class="panel" id="teachers">
+                    <h2>Багшийн эрхийн удирдлага</h2>
+
+                    <p class="muted">
+                        Багш бүрийн судалгаа болон цахим хичээл ашиглах эрхийг удирдана.
+                    </p>
+
+                    <p id="teacher-permission-message" class="muted">
+                        Багшийн мэдээллийг ачаалж байна...
+                    </p>
+
+                    <div class="field" style="margin: 18px 0;">
+                        <label for="teacher-search">
+                            Багш хайх (нэр эсвэл имэйл)
+                        </label>
+
+                        <input type="search" id="teacher-search" placeholder="Багшийн нэр эсвэл имэйл бичнэ үү...">
                     </div>
 
-                    <div class="field full">
-                        <label for="video-url">Видео холбоос</label>
-                        <input id="video-url" type="url" placeholder="https://www.youtube.com/watch?v=...">
+                    <div id="teacher-permission-list"></div>
+                </section>
+
+
+                <section class="panel" id="teacher-classes">
+                    <h2>Багшид анги хариуцуулах</h2>
+
+                    <p class="muted">
+                        Сургуулийг сонгож, тухайн сургуулийн анги, бүлгийг багшид онооно.
+                    </p>
+
+                    <div class="form-grid">
+
+                        <div class="field full">
+                            <label for="class-school-select">Сургууль сонгох</label>
+                            <select id="class-school-select">
+                                <option value="">Сургууль сонгоно уу</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="class-teacher-select">Багш сонгох</label>
+                            <select id="class-teacher-select">
+                                <option value="">Багш сонгоно уу</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="class-group-select">Анги, бүлэг сонгох</label>
+                            <select id="class-group-select" disabled>
+                                <option value="">Эхлээд сургууль сонгоно уу</option>
+                            </select>
+                        </div>
+
                     </div>
 
-                    <div class="field full">
-                        <label for="pdf-url">PDF холбоос</label>
-                        <input id="pdf-url" type="url" placeholder="./materials/9626.pdf">
+                    <div class="actions">
+                        <button type="button" id="assign-class-btn" class="btn primary">
+                            Анги хариуцуулах
+                        </button>
+                    </div>
+
+                    <p id="teacher-class-message" class="muted"></p>
+
+                    <div id="teacher-class-list"></div>
+                </section>
+
+
+
+                <section class="panel" id="school-registration">
+                    <h2>Шинэ сургууль бүртгэх</h2>
+                    <p class="muted">
+                        Сургуулийн мэдээлэл болон анги, бүлгийн бүтцийг тохируулна.
+                    </p>
+
+                    <div class="field">
+                        <label for="new-school-name">Сургуулийн нэр</label>
+                        <input type="text" id="new-school-name" placeholder="Сургуулийн нэр оруулна уу">
                     </div>
 
                     <div class="field">
-                        <label for="status-select">Төлөв</label>
-                        <select id="status-select">
-                            <option value="false">Ноорог — сурагчдад харагдахгүй</option>
-                            <option value="true">Нийтлэх — сурагчдад харагдана</option>
-                        </select>
+                        <label for="new-school-code">Сургуулийн код</label>
+                        <input type="text" id="new-school-code" placeholder="Жишээ: ORGIL001">
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <h3>Анги, бүлгийн тохиргоо</h3>
+                    <p class="muted">
+                        Сургуульд байгаа ангиудыг сонгож, бүлгийн тоог тохируулна.
+                    </p>
+
+                    <div id="school-grade-options"></div>
+
+                    <div class="school-summary">
+                        <strong>Үүсэх анги, бүлгийн нийт тоо:</strong>
+                        <span id="school-class-total">0</span>
+                    </div>
+
+                    <button type="button" id="create-school-btn" class="btn primary">
+                        Сургууль бүртгэх
+                    </button>
+
+                    <p id="school-registration-message" class="muted"></p>
+                </section>
+            </main>
+
+            <!-- Эрх өөрчлөх баталгаажуулах Modal -->
+            <div id="permission-modal" class="permission-modal" hidden>
+                <div class="permission-modal-backdrop"></div>
+
+                <div class="permission-modal-box" role="dialog" aria-modal="true"
+                    aria-labelledby="permission-modal-title">
+
+                    <div class="permission-modal-header">
+                        <h2 id="permission-modal-title">
+                            Эрх өөрчлөх баталгаажуулалт
+                        </h2>
+                        <button type="button" id="modal-close" class="modal-close">×</button>
+                    </div>
+
+                    <div class="permission-modal-body">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">♙</div>
+                            <div>
+                                <strong id="modal-teacher-name"></strong>
+                                <p id="modal-teacher-email"></p>
+                            </div>
+                        </div>
+
+                        <div class="permission-details">
+                            <small>ӨӨРЧЛӨХ ЭРХ</small>
+                            <h3 id="modal-permission-name"></h3>
+
+                            <div class="permission-status">
+                                <span>Өмнөх төлөв</span>
+                                <strong id="modal-old-status"></strong>
+                            </div>
+
+                            <div class="permission-status">
+                                <span>Шинэ төлөв</span>
+                                <strong id="modal-new-status"></strong>
+                            </div>
+                        </div>
+
+                        <p class="modal-note">
+                            Энэ өөрчлөлт зөвхөн сонгосон багшид үйлчилнэ.
+                        </p>
+                    </div>
+
+                    <div class="permission-modal-actions">
+                        <button type="button" id="modal-cancel" class="btn secondary">Болих</button>
+
+                        <button type="button" id="modal-confirm" class="btn primary">Баталгаажуулах</button>
                     </div>
                 </div>
-
-                <div class="actions">
-                    <button class="btn primary" id="save-button" type="submit">
-                        Хичээл хадгалах
-                    </button>
-                    <button class="btn secondary" id="cancel-button" type="button" hidden>
-                        Болих
-                    </button>
-                </div>
-
-                <p id="message" role="status" aria-live="polite"></p>
-            </form>
-        </section>
-        
-<section class="panel">
-    <h2>Сурагчдын бүртгэл</h2>
-    <p class="muted">
-        ZAAN Learning платформд бүртгүүлсэн сурагчдын мэдээлэл.
-    </p>
-
-    <div class="student-filters">
-        <input
-            type="text"
-            id="student-search"
-            placeholder="Сурагчийн нэрээр хайх..."
-        >
-
-        <select id="student-grade-filter">
-            <option value="">Бүх анги</option>
-            <option value="6">6-р анги</option>
-            <option value="7">7-р анги</option>
-            <option value="8">8-р анги</option>
-            <option value="9">9-р анги</option>
-            <option value="10">10-р анги</option>
-            <option value="11">11-р анги</option>
-            <option value="12">12-р анги</option>
-        </select>
-
-        <select id="student-class-filter">
-            <option value="">Бүх бүлэг</option>
-            <option value="1">1-р бүлэг</option>
-            <option value="2">2-р бүлэг</option>
-            <option value="3">3-р бүлэг</option>
-        </select>
-    </div>
-
-    <p id="student-list-message" class="muted">
-        Сурагчдын мэдээллийг ачаалж байна...
-    </p>
-
-    <div id="student-list"></div>
-</section>
-
-        <section class="panel">
-            <h2>Хичээлүүд</h2>
-
-            <div class="field">
-                <label for="filter">Төрлөөр шүүх</label>
-                <select id="filter">
-                    <option value="all">Бүх хичээл</option>
-                    <option value="Computing">Computing</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="Web Development">Web Development</option>
-                </select>
             </div>
 
-            <p id="list-message" class="muted">Хичээлүүдийг ачаалж байна...</p>
-            <div id="course-list"></div>
-        </section>
-    </main>
 
-    <script type="module">
-        import { supabase } from './supabase.js';
+            <!-- ZAAN мэдэгдлийн цонх -->
+            <div id="notice-modal" class="permission-modal" hidden>
+                <div class="permission-modal-backdrop"></div>
 
-        const $ = (id) => document.getElementById(id);
+                <div class="permission-modal-box" role="dialog" aria-modal="true">
 
-        let editingId = null;
-        let courses = [];
+                    <div class="permission-modal-header">
+                        <h2 id="notice-title">Мэдэгдэл</h2>
+                        <button type="button" id="notice-close" class="modal-close">×</button>
+                    </div>
 
-        function showMessage(message, isError = false) {
-            $('message').textContent = message;
-            $('message').style.color = isError ? '#b91c1c' : '#15803d';
-        }
+                    <div class="permission-modal-body">
+                        <div class="teacher-info">
+                            <div id="notice-icon" class="teacher-avatar">✓</div>
+                            <div>
+                                <strong id="notice-heading">Амжилттай</strong>
+                                <p id="notice-message"></p>
+                            </div>
+                        </div>
+                    </div>
 
-        function safeUrl(value) {
-            if (!value) return '';
-            try {
-                const url = new URL(value);
-                return ['https:', 'http:'].includes(url.protocol)
-                    ? url.href
-                    : '';
-            } catch {
-                return '';
-            }
-        }
+                    <div class="permission-modal-actions">
+                        <button type="button" id="notice-ok" class="btn primary">Ойлголоо</button>
+                    </div>
+                </div>
+            </div>
 
-        async function checkAdmin() {
-            const { data: sessionData, error: sessionError } =
-                await supabase.auth.getSession();
+            <script type="module">
 
-            if (sessionError) throw sessionError;
+                function showPermissionModal(teacherName, teacherEmail, label, newValue) {
+                    return new Promise((resolve) => {
+                        const modal = $('permission-modal');
 
-            if (!sessionData.session) {
-                window.location.replace('./login.html');
-                return false;
-            }
+                        $('modal-teacher-name').textContent = teacherName;
+                        $('modal-teacher-email').textContent = teacherEmail;
+                        $('modal-permission-name').textContent = label;
 
-            const { data: roleData, error: roleError } = await supabase
-                .from('user_roles')
-                .select('role')
-                .eq('user_id', sessionData.session.user.id)
-                .maybeSingle();
+                        $('modal-old-status').textContent =
+                            newValue ? 'Хаалттай' : 'Нээлттэй';
 
-            if (roleError) throw roleError;
+                        $('modal-new-status').textContent =
+                            newValue ? 'Нээлттэй' : 'Хаалттай';
 
-            if (roleData?.role !== 'admin') {
-                await supabase.auth.signOut();
-                window.location.replace('./login.html');
-                return false;
-            }
+                        $('modal-old-status').style.color = '#64748b';
 
-            return true;
-        }
+                        $('modal-new-status').style.color =
+                            newValue ? '#15803d' : '#dc2626';
 
-        function resetForm() {
-            editingId = null;
-            $('course-form').reset();
-            $('form-title').textContent = 'Шинэ хичээл нэмэх';
-            $('save-button').textContent = 'Хичээл хадгалах';
-            $('cancel-button').hidden = true;
-            showMessage('');
-        }
+                        modal.hidden = false;
 
-        function updateStats() {
-            $('total-count').textContent = courses.length;
-            $('published-count').textContent =
-                courses.filter(course => course.is_published).length;
-            $('draft-count').textContent =
-                courses.filter(course => !course.is_published).length;
-        }
+                        function closeModal(result) {
+                            modal.hidden = true;
 
-        function renderCourses() {
-            const filter = $('filter').value;
-            const visible = filter === 'all'
-                ? courses
-                : courses.filter(course => course.subject === filter);
+                            $('modal-confirm').onclick = null;
+                            $('modal-cancel').onclick = null;
+                            $('modal-close').onclick = null;
 
-            $('course-list').replaceChildren();
+                            modal.querySelector('.permission-modal-backdrop').onclick = null;
 
-            if (visible.length === 0) {
-                $('list-message').textContent = 'Одоогоор хичээл алга.';
-                return;
-            }
+                            document.removeEventListener('keydown', handleEscape);
 
-            $('list-message').textContent = '';
+                            resolve(result);
+                        }
 
-            for (const course of visible) {
-                const card = document.createElement('article');
-                card.className = 'course';
+                        function handleEscape(event) {
+                            if (event.key === 'Escape') {
+                                closeModal(false);
+                            }
+                        }
 
-                const heading = document.createElement('h3');
-                heading.textContent = course.title || '(Нэргүй хичээл)';
+                        $('modal-confirm').onclick = () => closeModal(true);
+                        $('modal-cancel').onclick = () => closeModal(false);
+                        $('modal-close').onclick = () => closeModal(false);
 
-                const status = document.createElement('span');
-                status.className = 'status ' +
-                    (course.is_published ? 'published' : 'draft');
-                status.textContent = course.is_published
-                    ? 'Нийтэлсэн'
-                    : 'Ноорог';
+                        modal.querySelector('.permission-modal-backdrop').onclick =
+                            () => closeModal(false);
 
-                const description = document.createElement('p');
-                description.textContent =
-                    `${course.subject || ''} — ${course.description || 'Тайлбаргүй'}`;
-
-                card.append(heading, status, description);
-
-                const links = document.createElement('p');
-
-                for (const [label, rawUrl] of [
-                    ['Видео', course.video_url],
-                    ['PDF', course.pdf_url]
-                ]) {
-                    const url = safeUrl(rawUrl);
-                    if (!url) continue;
-
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.target = '_blank';
-                    link.rel = 'noopener noreferrer';
-                    link.textContent = label;
-                    link.style.marginRight = '16px';
-                    links.append(link);
+                        document.addEventListener('keydown', handleEscape);
+                    });
                 }
 
-                card.append(links);
+                function showNoticeModal(message, type = 'success') {
+                    return new Promise((resolve) => {
+                        const modal = $('notice-modal');
+                        const isSuccess = type === 'success';
 
-                const actions = document.createElement('div');
-                actions.className = 'course-actions';
+                        $('notice-title').textContent =
+                            isSuccess ? 'Амжилттай' : 'Алдаа гарлаа';
 
-                const editButton = document.createElement('button');
-                editButton.className = 'btn secondary small';
-                editButton.textContent = 'Засах';
-                editButton.addEventListener('click', () => editCourse(course.id));
+                        $('notice-heading').textContent =
+                            isSuccess ? 'Үйлдэл амжилттай' : 'Үйлдэл амжилтгүй';
 
-                const toggleButton = document.createElement('button');
-                toggleButton.className = 'btn secondary small';
-                toggleButton.textContent = course.is_published
-                    ? 'Ноорог болгох'
-                    : 'Нийтлэх';
-                toggleButton.addEventListener('click', () =>
-                    togglePublished(course));
+                        $('notice-message').textContent = message;
 
-                const deleteButton = document.createElement('button');
-                deleteButton.className = 'btn danger small';
-                deleteButton.textContent = 'Устгах';
-                deleteButton.addEventListener('click', () =>
-                    deleteCourse(course.id, course.title));
+                        $('notice-icon').textContent = isSuccess ? '✓' : '!';
+                        $('notice-icon').style.background =
+                            isSuccess ? '#dcfce7' : '#fee2e2';
 
-                actions.append(editButton, toggleButton, deleteButton);
-                card.append(actions);
-                $('course-list').append(card);
-            }
-        }
+                        $('notice-icon').style.color =
+                            isSuccess ? '#15803d' : '#dc2626';
 
-        async function loadCourses() {
-            $('list-message').textContent = 'Хичээлүүдийг ачаалж байна...';
+                        modal.hidden = false;
 
-            const { data, error } = await supabase
-                .from('courses')
-                .select('*')
-                .order('id', { ascending: false });
+                        function closeNotice() {
+                            modal.hidden = true;
 
-            if (error) throw error;
+                            $('notice-ok').onclick = null;
+                            $('notice-close').onclick = null;
 
-            courses = data || [];
-            updateStats();
-            renderCourses();
-        }
+                            modal.querySelector(
+                                '.permission-modal-backdrop'
+                            ).onclick = null;
 
-        function editCourse(id) {
-            const course = courses.find(item => String(item.id) === String(id));
-            if (!course) return;
+                            document.removeEventListener('keydown', handleEscape);
 
-            editingId = course.id;
-            $('title').value = course.title || '';
-            $('subject').value = course.subject || 'Computing';
-            $('description').value = course.description || '';
-            $('video-url').value = course.video_url || '';
-            $('pdf-url').value = course.pdf_url || '';
-            $('status-select').value = String(!!course.is_published);
+                            resolve();
+                        }
 
-            $('form-title').textContent = 'Хичээл засах';
-            $('save-button').textContent = 'Өөрчлөлт хадгалах';
-            $('cancel-button').hidden = false;
-            showMessage('');
+                        function handleEscape(event) {
+                            if (event.key === 'Escape') {
+                                closeNotice();
+                            }
+                        }
 
-            $('course-form').scrollIntoView({ behavior: 'smooth' });
-        }
+                        $('notice-ok').onclick = closeNotice;
+                        $('notice-close').onclick = closeNotice;
 
-        async function togglePublished(course) {
-            const { error } = await supabase
-                .from('courses')
-                .update({ is_published: !course.is_published })
-                .eq('id', course.id);
+                        modal.querySelector(
+                            '.permission-modal-backdrop'
+                        ).onclick = closeNotice;
 
-            if (error) {
-                showMessage('Төлөв өөрчлөхөд алдаа гарлаа: ' + error.message, true);
-                return;
-            }
-
-            showMessage('Хичээлийн төлөв шинэчлэгдлээ.');
-            await loadCourses();
-        }
-
-        async function deleteCourse(id, title) {
-            if (!confirm(`"${title}" хичээлийг устгах уу? Энэ үйлдлийг буцаах боломжгүй.`)) {
-                return;
-            }
-
-            const { error } = await supabase
-                .from('courses')
-                .delete()
-                .eq('id', id);
-
-            if (error) {
-                showMessage('Устгахад алдаа гарлаа: ' + error.message, true);
-                return;
-            }
-
-            if (String(editingId) === String(id)) resetForm();
-
-            showMessage('Хичээл устгагдлаа.');
-            await loadCourses();
-        }
-
-        $('course-form').addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const title = $('title').value.trim();
-            const description = $('description').value.trim();
-            const videoUrl = $('video-url').value.trim();
-            const pdfUrl = $('pdf-url').value.trim();
-
-            if (videoUrl && !safeUrl(videoUrl)) {
-                showMessage('Видео холбоос http:// эсвэл https://-ээр эхлэх ёстой.', true);
-                return;
-            }
-
-            if (pdfUrl && !safeUrl(pdfUrl)) {
-                showMessage('PDF холбоос http:// эсвэл https://-ээр эхлэх ёстой.', true);
-                return;
-            }
-
-            const record = {
-                title,
-                description: description || null,
-                subject: $('subject').value,
-                video_url: videoUrl || null,
-                pdf_url: pdfUrl || null,
-                is_published: $('status-select').value === 'true'
-            };
-
-            $('save-button').disabled = true;
-            showMessage('Хадгалж байна...');
-
-            try {
-                let result;
-
-                if (editingId !== null) {
-                    result = await supabase
-                        .from('courses')
-                        .update(record)
-                        .eq('id', editingId);
-                } else {
-                    result = await supabase
-                        .from('courses')
-                        .insert(record);
+                        document.addEventListener('keydown', handleEscape);
+                    });
                 }
 
-                if (result.error) throw result.error;
+                function renderSchoolGradeOptions() {
+                    const container = $('school-grade-options');
 
-                showMessage(editingId !== null
-                    ? 'Хичээлийн өөрчлөлт хадгалагдлаа.'
-                    : 'Шинэ хичээл нэмэгдлээ.');
+                    container.innerHTML = '';
 
-                resetForm();
-                await loadCourses();
-            } catch (error) {
-                showMessage('Хадгалахад алдаа гарлаа: ' + error.message, true);
-            } finally {
-                $('save-button').disabled = false;
-            }
-        });
+                    for (let grade = 1; grade <= 12; grade++) {
+                        const row = document.createElement('div');
+                        row.className = 'field';
+                        row.style.display = 'flex';
+                        row.style.alignItems = 'center';
+                        row.style.justifyContent = 'space-between';
+                        row.style.gap = '16px';
 
-        $('cancel-button').addEventListener('click', resetForm);
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.id = `school-grade-${grade}`;
+                        checkbox.value = grade;
+                        checkbox.style.width = '18px';
 
-        $('filter').addEventListener('change', renderCourses);
+                        const label = document.createElement('label');
+                        label.htmlFor = checkbox.id;
+                        label.textContent = `Grade ${grade}`;
+                        label.style.margin = '0';
+                        label.style.flex = '1';
 
-        $('logout-button').addEventListener('click', async () => {
-            $('logout-button').disabled = true;
+                        const groupSelect = document.createElement('select');
+                        groupSelect.id = `school-groups-${grade}`;
+                        groupSelect.disabled = true;
+                        groupSelect.style.maxWidth = '140px';
 
-            const { error } = await supabase.auth.signOut();
+                        for (let count = 1; count <= 10; count++) {
+                            const option = document.createElement('option');
+                            option.value = count;
+                            option.textContent = `${count} бүлэг`;
+                            groupSelect.appendChild(option);
+                        }
 
-            if (error) {
-                showMessage('Гарахад алдаа гарлаа: ' + error.message, true);
-                $('logout-button').disabled = false;
-                return;
-            }
+                        checkbox.addEventListener('change', () => {
+                            groupSelect.disabled = !checkbox.checked;
+                            updateSchoolClassTotal();
+                        });
 
-            window.location.replace('./login.html');
-        });
-        
-        async function loadStudents() {
-            const list = $('student-list');
-            const status = $('student-list-message');
+                        groupSelect.addEventListener('change', updateSchoolClassTotal);
 
-            status.textContent = 'Сурагчдын мэдээллийг ачаалж байна...';
-            list.replaceChildren();
+                        row.appendChild(checkbox);
+                        row.appendChild(label);
+                        row.appendChild(groupSelect);
 
-            const { data, error } = await supabase
-                .from('student_profiles')
-                .select('user_id, full_name, school_name, grade, class_group, created_at')
-                .order('grade', { ascending: true })
-                .order('class_group', { ascending: true });
+                        container.appendChild(row);
+                    }
 
-            console.log('Сурагчдын мэдээлэл:', { data, error });
+                    updateSchoolClassTotal();
+                }
 
-            if (error) {
-                status.textContent =
-                    'Сурагчдын мэдээлэл ачаалж чадсангүй: ' + error.message;
-                return;
-            }
+                async function createSchool() {
+                    const schoolName = $('new-school-name').value.trim();
+                    const schoolCode = $('new-school-code').value.trim();
 
-            if (!data || data.length === 0) {
-                status.textContent = 'Одоогоор сурагчийн профайл бүртгэгдээгүй байна.';
-                return;
-            }
+                    const message = $('school-registration-message');
+                    const button = $('create-school-btn');
 
-            const searchInput = $('student-search');
-            const gradeFilter = $('student-grade-filter');
-            const classFilter = $('student-class-filter');
+                    if (!schoolName || !schoolCode) {
+                        await showNoticeModal(
+                            'Сургуулийн нэр болон кодыг оруулна уу.',
+                            'error'
+                        );
+                        return;
+                    }
 
-            function renderStudents() {
-                const search = searchInput.value.trim().toLowerCase();
-                const grade = gradeFilter.value;
-                const group = classFilter.value;
+                    const classes = [];
 
-                const filtered = data.filter(student => {
-                    const name = (student.full_name || '').toLowerCase();
+                    for (let grade = 1; grade <= 12; grade++) {
+                        const checkbox = $(`school-grade-${grade}`);
+                        const groupSelect = $(`school-groups-${grade}`);
 
-                    return name.includes(search)
-                        && (!grade || String(student.grade) === grade)
-                        && (!group || String(student.class_group) === group);
+                        if (checkbox && checkbox.checked) {
+                            classes.push({
+                                grade: grade,
+                                groups: Number(groupSelect.value)
+                            });
+                        }
+                    }
+
+                    if (classes.length === 0) {
+                        await showNoticeModal(
+                            'Дор хаяж нэг анги сонгоно уу.',
+                            'error'
+                        );
+                        return;
+                    }
+
+                    button.disabled = true;
+                    button.textContent = 'Бүртгэж байна...';
+                    message.textContent = '';
+
+                    try {
+                        const { data, error } = await supabase.rpc(
+                            'create_school_with_classes',
+                            {
+                                p_school_name: schoolName,
+                                p_school_code: schoolCode,
+                                p_classes: classes
+                            }
+                        );
+
+                        if (error) throw error;
+
+                        message.textContent = 'Сургууль амжилттай бүртгэгдлээ.';
+
+                        $('new-school-name').value = '';
+                        $('new-school-code').value = '';
+
+                        for (let grade = 1; grade <= 12; grade++) {
+                            $(`school-grade-${grade}`).checked = false;
+                            $(`school-groups-${grade}`).disabled = true;
+                            $(`school-groups-${grade}`).value = '1';
+                        }
+
+                        updateSchoolClassTotal();
+
+                        await showNoticeModal(
+                            'Сургууль болон анги, бүлгүүд амжилттай бүртгэгдлээ.',
+                            'success'
+                        );
+
+                    } catch (error) {
+                        console.error('School registration error:', error);
+
+                        await showNoticeModal(
+                            'Сургууль бүртгэхэд алдаа гарлаа: ' + error.message,
+                            'error'
+                        );
+
+                    } finally {
+                        button.disabled = false;
+                        button.textContent = 'Сургууль бүртгэх';
+                    }
+                }
+
+
+                function updateSchoolClassTotal() {
+                    let total = 0;
+
+                    for (let grade = 1; grade <= 12; grade++) {
+                        const checkbox = $(`school-grade-${grade}`);
+                        const groupSelect = $(`school-groups-${grade}`);
+
+                        if (checkbox && checkbox.checked) {
+                            total += Number(groupSelect.value);
+                        }
+                    }
+
+                    $('school-class-total').textContent = total;
+                }
+
+
+                import { supabase } from './supabase.js';
+
+                const $ = (id) => document.getElementById(id);
+
+                let editingId = null;
+                let courses = [];
+
+                function showMessage(message, isError = false) {
+                    $('message').textContent = message;
+                    $('message').style.color = isError ? '#b91c1c' : '#15803d';
+                }
+
+                function safeUrl(value) {
+                    if (!value) return '';
+                    try {
+                        const url = new URL(value);
+                        return ['https:', 'http:'].includes(url.protocol)
+                            ? url.href
+                            : '';
+                    } catch {
+                        return '';
+                    }
+                }
+
+                async function checkAdmin() {
+                    const { data: sessionData, error: sessionError } =
+                        await supabase.auth.getSession();
+
+                    if (sessionError) throw sessionError;
+
+                    if (!sessionData.session) {
+                        window.location.replace('./login.html');
+                        return false;
+                    }
+
+                    const { data: roleData, error: roleError } = await supabase
+                        .from('user_roles')
+                        .select('role')
+                        .eq('user_id', sessionData.session.user.id)
+                        .maybeSingle();
+
+                    if (roleError) throw roleError;
+
+                    if (roleData?.role !== 'admin') {
+                        await supabase.auth.signOut();
+                        window.location.replace('./login.html');
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                function resetForm() {
+                    editingId = null;
+                    $('course-form').reset();
+                    $('form-title').textContent = 'Шинэ хичээл нэмэх';
+                    $('save-button').textContent = 'Хичээл хадгалах';
+                    $('cancel-button').hidden = true;
+                    showMessage('');
+                }
+
+                function updateStats() {
+                    $('total-count').textContent = courses.length;
+                    $('published-count').textContent =
+                        courses.filter(course => course.is_published).length;
+                    $('draft-count').textContent =
+                        courses.filter(course => !course.is_published).length;
+                }
+
+                function renderCourses() {
+                    const filter = $('filter').value;
+                    const visible = filter === 'all'
+                        ? courses
+                        : courses.filter(course => course.subject === filter);
+
+                    $('course-list').replaceChildren();
+
+                    if (visible.length === 0) {
+                        $('list-message').textContent = 'Одоогоор хичээл алга.';
+                        return;
+                    }
+
+                    $('list-message').textContent = '';
+
+                    for (const course of visible) {
+                        const card = document.createElement('article');
+                        card.className = 'course';
+
+                        const heading = document.createElement('h3');
+                        heading.textContent = course.title || '(Нэргүй хичээл)';
+
+                        const status = document.createElement('span');
+                        status.className = 'status ' +
+                            (course.is_published ? 'published' : 'draft');
+                        status.textContent = course.is_published
+                            ? 'Нийтэлсэн'
+                            : 'Ноорог';
+
+                        const description = document.createElement('p');
+                        description.textContent =
+                            `${course.subject || ''} — ${course.description || 'Тайлбаргүй'}`;
+
+                        card.append(heading, status, description);
+
+                        const links = document.createElement('p');
+
+                        for (const [label, rawUrl] of [
+                            ['Видео', course.video_url],
+                            ['PDF', course.pdf_url]
+                        ]) {
+                            const url = safeUrl(rawUrl);
+                            if (!url) continue;
+
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.target = '_blank';
+                            link.rel = 'noopener noreferrer';
+                            link.textContent = label;
+                            link.style.marginRight = '16px';
+                            links.append(link);
+                        }
+
+                        card.append(links);
+
+                        const actions = document.createElement('div');
+                        actions.className = 'course-actions';
+
+                        const editButton = document.createElement('button');
+                        editButton.className = 'btn secondary small';
+                        editButton.textContent = 'Засах';
+                        editButton.addEventListener('click', () => editCourse(course.id));
+
+                        const toggleButton = document.createElement('button');
+                        toggleButton.className = 'btn secondary small';
+                        toggleButton.textContent = course.is_published
+                            ? 'Ноорог болгох'
+                            : 'Нийтлэх';
+                        toggleButton.addEventListener('click', () =>
+                            togglePublished(course));
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.className = 'btn danger small';
+                        deleteButton.textContent = 'Устгах';
+                        deleteButton.addEventListener('click', () =>
+                            deleteCourse(course.id, course.title));
+
+                        actions.append(editButton, toggleButton, deleteButton);
+                        card.append(actions);
+                        $('course-list').append(card);
+                    }
+                }
+
+                async function loadCourses() {
+                    $('list-message').textContent = 'Хичээлүүдийг ачаалж байна...';
+
+                    const { data, error } = await supabase
+                        .from('courses')
+                        .select('*')
+                        .order('id', { ascending: false });
+
+                    if (error) throw error;
+
+                    courses = data || [];
+                    updateStats();
+                    renderCourses();
+                }
+
+                function editCourse(id) {
+                    const course = courses.find(item => String(item.id) === String(id));
+                    if (!course) return;
+
+                    editingId = course.id;
+                    $('title').value = course.title || '';
+                    $('subject').value = course.subject || 'Computing';
+                    $('description').value = course.description || '';
+                    $('video-url').value = course.video_url || '';
+                    $('pdf-url').value = course.pdf_url || '';
+                    $('status-select').value = String(!!course.is_published);
+
+                    $('form-title').textContent = 'Хичээл засах';
+                    $('save-button').textContent = 'Өөрчлөлт хадгалах';
+                    $('cancel-button').hidden = false;
+                    showMessage('');
+
+                    $('course-form').scrollIntoView({ behavior: 'smooth' });
+                }
+
+                async function togglePublished(course) {
+                    const { error } = await supabase
+                        .from('courses')
+                        .update({ is_published: !course.is_published })
+                        .eq('id', course.id);
+
+                    if (error) {
+                        showMessage('Төлөв өөрчлөхөд алдаа гарлаа: ' + error.message, true);
+                        return;
+                    }
+
+                    showMessage('Хичээлийн төлөв шинэчлэгдлээ.');
+                    await loadCourses();
+                }
+
+                async function deleteCourse(id, title) {
+                    if (!confirm(`"${title}" хичээлийг устгах уу? Энэ үйлдлийг буцаах боломжгүй.`)) {
+                        return;
+                    }
+
+                    const { error } = await supabase
+                        .from('courses')
+                        .delete()
+                        .eq('id', id);
+
+                    if (error) {
+                        showMessage('Устгахад алдаа гарлаа: ' + error.message, true);
+                        return;
+                    }
+
+                    if (String(editingId) === String(id)) resetForm();
+
+                    showMessage('Хичээл устгагдлаа.');
+                    await loadCourses();
+                }
+
+                $('course-form').addEventListener('submit', async (event) => {
+                    event.preventDefault();
+
+                    const title = $('title').value.trim();
+                    const description = $('description').value.trim();
+                    const videoUrl = $('video-url').value.trim();
+                    const pdfUrl = $('pdf-url').value.trim();
+
+                    if (videoUrl && !safeUrl(videoUrl)) {
+                        showMessage('Видео холбоос http:// эсвэл https://-ээр эхлэх ёстой.', true);
+                        return;
+                    }
+
+                    if (pdfUrl && !safeUrl(pdfUrl)) {
+                        showMessage('PDF холбоос http:// эсвэл https://-ээр эхлэх ёстой.', true);
+                        return;
+                    }
+
+                    const record = {
+                        title,
+                        description: description || null,
+                        subject: $('subject').value,
+                        video_url: videoUrl || null,
+                        pdf_url: pdfUrl || null,
+                        is_published: $('status-select').value === 'true'
+                    };
+
+                    $('save-button').disabled = true;
+                    showMessage('Хадгалж байна...');
+
+                    try {
+                        let result;
+
+                        if (editingId !== null) {
+                            result = await supabase
+                                .from('courses')
+                                .update(record)
+                                .eq('id', editingId);
+                        } else {
+                            result = await supabase
+                                .from('courses')
+                                .insert(record);
+                        }
+
+                        if (result.error) throw result.error;
+
+                        showMessage(editingId !== null
+                            ? 'Хичээлийн өөрчлөлт хадгалагдлаа.'
+                            : 'Шинэ хичээл нэмэгдлээ.');
+
+                        resetForm();
+                        await loadCourses();
+                    } catch (error) {
+                        showMessage('Хадгалахад алдаа гарлаа: ' + error.message, true);
+                    } finally {
+                        $('save-button').disabled = false;
+                    }
                 });
 
-                list.replaceChildren();
+                $('cancel-button').addEventListener('click', resetForm);
 
-                const isFiltering =
-                    search !== '' || grade !== '' || group !== '';
+                $('filter').addEventListener('change', renderCourses);
 
-                status.textContent = isFiltering
-                    ? `Хайлтын үр дүн: ${filtered.length} сурагч`
-                    : `Нийт ${data.length} сурагч`;
+                $('logout-button').addEventListener('click', async () => {
+                    $('logout-button').disabled = true;
 
-                if (filtered.length === 0) {
-                    status.textContent = 'Хайлтад тохирох сурагч олдсонгүй.';
-                    return;
+                    const { error } = await supabase.auth.signOut();
+
+                    if (error) {
+                        showMessage('Гарахад алдаа гарлаа: ' + error.message, true);
+                        $('logout-button').disabled = false;
+                        return;
+                    }
+
+                    window.location.replace('./login.html');
+                });
+                async function createNewStudent() {
+                    const message = $('new-student-message');
+                    const button = $('save-new-student-btn');
+
+                    const schoolId = $('new-student-school').value;
+                    const classId = $('new-student-group').value;
+
+                    const lastName = $('new-student-last-name').value.trim();
+                    const firstName = $('new-student-first-name').value.trim();
+                    const studentCode = $('new-student-code').value.trim();
+                    const gender = $('new-student-gender').value;
+
+                    if (!schoolId || !classId || !lastName ||
+                        !firstName || !studentCode || !gender) {
+                        message.textContent = 'Одон тэмдэгтэй (*) талбаруудыг бөглөнө үү.';
+                        return;
+                    }
+
+                    button.disabled = true;
+                    message.textContent = 'Бүртгэж байна...';
+
+                    try {
+                        const { data: userData, error: userError } =
+                            await supabase.auth.getUser();
+
+                        if (userError || !userData.user) {
+                            throw new Error('Нэвтэрсэн хэрэглэгч олдсонгүй.');
+                        }
+
+                        const { error } = await supabase
+                            .from('students')
+                            .insert({
+                                school_id: schoolId,
+                                school_class_id: classId,
+                                last_name: lastName,
+                                first_name: firstName,
+                                student_code: studentCode,
+                                gender: gender,
+                                student_phone: $('new-student-phone').value.trim() || null,
+                                parent_phone: $('new-parent-phone').value.trim() || null,
+                                parent_workplace: $('new-parent-workplace').value.trim() || null,
+                                home_address: $('new-student-address').value.trim() || null,
+                                created_by: userData.user.id
+                            });
+
+                        if (error) throw error;
+
+                        message.textContent = 'Сурагч амжилттай бүртгэгдлээ!';
+
+                        // Формын мэдээллийг цэвэрлэх
+                        $('new-student-last-name').value = '';
+                        $('new-student-first-name').value = '';
+                        $('new-student-code').value = '';
+                        $('new-student-gender').value = '';
+
+                        $('new-student-school').value = '';
+                        $('new-student-grade').innerHTML =
+                            '<option value="">Анги сонгох</option>';
+                        $('new-student-group').innerHTML =
+                            '<option value="">Эхлээд анги сонгоно уу</option>';
+
+                        $('new-student-phone').value = '';
+                        $('new-parent-phone').value = '';
+                        $('new-parent-workplace').value = '';
+                        $('new-student-address').value = '';
+
+                        $('new-student-group').disabled = true;
+                        $('new-student-grade').disabled = false;
+
+                        newStudentClasses = [];
+
+                        await loadStudents();
+
+                    } catch (error) {
+                        console.error(error);
+                        message.textContent = 'Алдаа: ' + error.message;
+                    } finally {
+                        button.disabled = false;
+                    }
                 }
 
-                for (const student of filtered) {
-                    const card = document.createElement('article');
-                    card.className = 'course';
+                let studentImportRows = [];
 
-                    const name = document.createElement('h3');
-                    name.textContent = student.full_name || 'Нэр оруулаагүй';
+                async function previewStudentImport() {
+                    async function previewStudentImport() {
+                        const fileInput = $('student-excel-file');
+                        const message = $('student-import-message');
+                        const preview = $('student-import-preview');
 
-                    const details = document.createElement('p');
-                    details.textContent =
-                        `${student.school_name || 'Сургууль тодорхойгүй'} · ` +
-                        `${student.grade || '?'}-р анги · ` +
-                        `${student.class_group || '?'}-р бүлэг`;
+                        preview.replaceChildren();
+                        studentImportRows = [];
 
-                    card.append(name, details);
-                    list.append(card);
+                        const file = fileInput.files[0];
+
+                        if (!file) {
+                            message.textContent = 'Excel файл сонгоно уу.';
+                            return;
+                        }
+
+                        if (!window.XLSX) {
+                            message.textContent = 'Excel унших сан ачаалагдсангүй.';
+                            return;
+                        }
+
+                        try {
+                            message.textContent = 'Файлыг уншиж байна...';
+
+                            const buffer = await file.arrayBuffer();
+                            const workbook = XLSX.read(buffer, { type: 'array' });
+                            const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+                            const rows = XLSX.utils.sheet_to_json(sheet, {
+                                defval: ''
+                            });
+
+                            const headers = [
+                                'Овог',
+                                'Нэр',
+                                'Сурагчийн код',
+                                'Хүйс',
+                                'Анги',
+                                'Бүлэг'
+                            ];
+
+                            if (!rows.length) {
+                                throw new Error('Excel файл хоосон байна.');
+                            }
+
+                            const missing = headers.filter(
+                                header => !Object.hasOwn(rows[0], header)
+                            );
+
+                            if (missing.length) {
+                                throw new Error(
+                                    'Дутуу багана: ' + missing.join(', ')
+                                );
+                            }
+
+                            studentImportRows = rows;
+
+                            const table = document.createElement('table');
+                            table.style.width = '100%';
+
+                            const thead = document.createElement('thead');
+                            const headerRow = document.createElement('tr');
+
+                            headers.forEach(header => {
+                                const th = document.createElement('th');
+                                th.textContent = header;
+                                headerRow.appendChild(th);
+                            });
+
+                            thead.appendChild(headerRow);
+                            table.appendChild(thead);
+
+                            const tbody = document.createElement('tbody');
+
+                            rows.forEach(row => {
+                                const tr = document.createElement('tr');
+
+                                headers.forEach(header => {
+                                    const td = document.createElement('td');
+                                    let value = row[header];
+
+                                    if (header === 'Хүйс') {
+                                        const gender = String(value).trim().toLowerCase();
+
+                                        if (gender === 'эрэгтэй' || gender === 'male') {
+                                            value = 'Эрэгтэй';
+                                        } else if (gender === 'эмэгтэй' || gender === 'female') {
+                                            value = 'Эмэгтэй';
+                                        } else {
+                                            value = 'Тодорхойгүй';
+                                        }
+                                    }
+
+                                    td.textContent = value;
+                                    tr.appendChild(td);
+                                });
+
+                                tbody.appendChild(tr);
+                            });
+
+                            table.appendChild(tbody);
+                            preview.appendChild(table);
+
+                            message.textContent =
+                                `Файлаас ${rows.length} мөр уншлаа. Урьдчилан шалгана уу.`;
+
+                        } catch (error) {
+                            console.error('Excel импортын алдаа:', error);
+                            message.textContent = 'Алдаа: ' + error.message;
+                        }
+                    }
                 }
-            }
+                function downloadStudentTemplate() {
+    if (!window.XLSX) {
+        $('student-import-message').textContent =
+            'Excel сан ачаалагдсангүй.';
+        return;
+    }
 
-            renderStudents();
+    const rows = [
+        [
+            'Овог',
+            'Нэр',
+            'Сурагчийн код',
+            'Хүйс',
+            'Сургууль',
+            'Анги',
+            'Бүлэг',
+            'Сурагчийн утас',
+            'Эцэг эхийн утас',
+            'Эцэг эхийн ажилладаг байгууллага',
+            'Гэрийн хаяг'
+        ],
+        [
+            'Бат',
+            'Болд',
+            'TEST001',
+            'male',
+            'Оргил олон улсын сургууль',
+            7,
+            1,
+            '99112233',
+            '88112233',
+            'Байгууллагын нэр',
+            'Улаанбаатар хот'
+        ]
+    ];
 
-            searchInput.oninput = renderStudents;
-            gradeFilter.onchange = renderStudents;
-            classFilter.onchange = renderStudents;
-        }
+    const worksheet = XLSX.utils.aoa_to_sheet(rows);
+    const workbook = XLSX.utils.book_new();
 
-        try {
-            const allowed = await checkAdmin();
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        'Students'
+    );
 
-            if (allowed) {
-                await loadCourses();
-                await loadStudents();
-            }
-        } catch (error) {
-            $('list-message').textContent =
-                'Ачаалахад алдаа гарлаа: ' + error.message;
-        }
-    </script>
+    XLSX.writeFile(
+        workbook,
+        'ZAAN_student_template.xlsx'
+    );
+}
+                async function loadStudents() {
+                    const list = $('student-list');
+                    const status = $('student-list-message');
+
+                    status.textContent = 'Сурагчдын мэдээллийг ачаалж байна...';
+                    list.replaceChildren();
+
+                    const [
+                        { data: newStudents, error: newError },
+                        { data: oldStudents, error: oldError },
+                        { data: schools, error: schoolError },
+                        { data: classes, error: classError }
+                    ] = await Promise.all([
+                        supabase
+                            .from('students')
+                            .select('id, student_code, last_name, first_name, gender, school_id, school_class_id, created_at')
+                            .order('last_name'),
+
+                        supabase
+                            .from('student_profiles')
+                            .select('user_id, full_name, school_name, grade, class_group, created_at')
+                            .order('grade'),
+
+                        supabase
+                            .from('schools')
+                            .select('id, school_name'),
+
+                        supabase
+                            .from('school_classes')
+                            .select('id, grade, class_group')
+                    ]);
+
+                    if (newError || oldError || schoolError || classError) {
+                        status.textContent =
+                            'Мэдээлэл ачаалахад алдаа гарлаа: ' +
+                            (newError || oldError || schoolError || classError).message;
+                        return;
+                    }
+
+                    const schoolMap = new Map(
+                        (schools || []).map(s => [s.id, s.school_name])
+                    );
+
+                    const classMap = new Map(
+                        (classes || []).map(c => [c.id, c])
+                    );
+
+                    // Шинэ students хүснэгтийн мэдээлэл
+                    const normalizedNew = (newStudents || []).map(student => {
+                        const schoolClass = classMap.get(student.school_class_id);
+
+                        return {
+                            name: `${student.last_name || ''} ${student.first_name || ''}`.trim(),
+                            school: schoolMap.get(student.school_id) || 'Сургууль тодорхойгүй',
+                            grade: schoolClass?.grade || '',
+                            group: schoolClass?.class_group || '',
+                            code: student.student_code || '',
+                            source: 'new'
+                        };
+                    });
+
+                    // Хуучин student_profiles хүснэгтийн мэдээлэл
+                    const normalizedOld = (oldStudents || []).map(student => ({
+                        name: student.full_name || '',
+                        school: student.school_name || 'Сургууль тодорхойгүй',
+                        grade: student.grade || '',
+                        group: student.class_group || '',
+                        code: '',
+                        source: 'old'
+                    }));
+
+                    const data = [...normalizedNew, ...normalizedOld];
+
+                    const searchInput = $('student-search');
+                    const gradeFilter = $('student-grade-filter');
+                    const classFilter = $('student-class-filter');
+
+                    function renderStudents() {
+                        const search = searchInput.value.trim().toLowerCase();
+                        const grade = gradeFilter.value;
+                        const group = classFilter.value;
+
+                        const filtered = data.filter(student => {
+                            const name = student.name.toLowerCase();
+                            const code = student.code.toLowerCase();
+
+                            return (
+                                (name.includes(search) || code.includes(search)) &&
+                                (!grade || String(student.grade) === grade) &&
+                                (!group || String(student.group) === group)
+                            );
+                        });
+
+                        list.replaceChildren();
+
+                        status.textContent = search || grade || group
+                            ? `Хайлтын үр дүн: ${filtered.length} сурагч`
+                            : `Нийт ${data.length} сурагч`;
+
+                        if (filtered.length === 0) {
+                            status.textContent = 'Хайлтад тохирох сурагч олдсонгүй.';
+                            return;
+                        }
+
+                        filtered.forEach(student => {
+                            const card = document.createElement('article');
+                            card.className = 'course';
+
+                            const name = document.createElement('h3');
+                            name.textContent = student.name || 'Нэр оруулаагүй';
+
+                            const details = document.createElement('p');
+                            details.textContent =
+                                `${student.school} · ${student.grade || '?'}-р анги · ` +
+                                `${student.group || '?'}-р бүлэг` +
+                                (student.code ? ` · Код: ${student.code}` : '');
+
+                            card.append(name, details);
+                            list.append(card);
+                        });
+                    }
+
+                    renderStudents();
+
+                    searchInput.oninput = renderStudents;
+                    gradeFilter.onchange = renderStudents;
+                    classFilter.onchange = renderStudents;
+                }
+
+                async function loadTeacherPermissions() {
+                    const list = $('teacher-permission-list');
+                    const message = $('teacher-permission-message');
+                    const searchInput = $('teacher-search');
+
+                    list.replaceChildren();
+                    message.textContent = 'Багшийн мэдээллийг ачаалж байна...';
+
+                    const { data: teachers, error } = await supabase
+                        .from('teacher_permissions')
+                        .select(` teacher_id, can_use_research, can_view_courses, can_create_courses, can_edit_courses, can_delete_courses`);
+
+                    if (error) {
+                        message.textContent = 'Алдаа: ' + error.message;
+                        return;
+                    }
+
+                    const teacherIds = (teachers || []).map(t => t.teacher_id);
+
+                    if (teacherIds.length === 0) {
+                        message.textContent = 'Багшийн бүртгэл олдсонгүй.';
+                        return;
+                    }
+
+                    const { data: profiles, error: profileError } = await supabase
+                        .from('student_profiles')
+                        .select('user_id, full_name')
+                        .in('user_id', teacherIds);
+
+                    if (profileError) {
+                        message.textContent = 'Нэр ачаалахад алдаа: ' + profileError.message;
+                        return;
+                    }
+
+                    const { data: emails, error: emailError } =
+                        await supabase.rpc('get_teacher_emails');
+
+                    if (emailError) {
+                        message.textContent = 'Имэйл ачаалахад алдаа: ' + emailError.message;
+                        return;
+                    }
+
+                    const profileMap = new Map(
+                        (profiles || []).map(p => [p.user_id, p.full_name])
+                    );
+
+                    const emailMap = new Map(
+                        (emails || []).map(e => [e.user_id, e.email])
+                    );
+
+                    const permissionLabels = [
+                        ['can_use_research', 'Судалгаа, тайлан ашиглах'],
+                        ['can_view_courses', 'Цахим хичээл үзэх']
+                    ];
+
+                    function renderTeachers() {
+                        const search = searchInput.value.trim().toLowerCase();
+
+                        const filtered = teachers.filter(teacher => {
+                            const name = profileMap.get(teacher.teacher_id) || '';
+                            const email = emailMap.get(teacher.teacher_id) || '';
+
+                            return name.toLowerCase().includes(search)
+                                || email.toLowerCase().includes(search);
+                        });
+
+                        list.replaceChildren();
+                        message.textContent =
+                            `Нийт ${teachers.length} багш · Олдсон ${filtered.length}`;
+
+                        if (filtered.length === 0) {
+                            message.textContent = 'Тохирох багш олдсонгүй.';
+                            return;
+                        }
+
+                        for (const teacher of filtered) {
+                            const card = document.createElement('article');
+                            card.className = 'course';
+
+                            const heading = document.createElement('h3');
+                            heading.textContent =
+                                'Багш: ' +
+                                (profileMap.get(teacher.teacher_id) || 'Нэр тодорхойгүй');
+
+                            const details = document.createElement('p');
+                            details.className = 'muted';
+                            details.textContent =
+                                emailMap.get(teacher.teacher_id) || 'Имэйл тодорхойгүй';
+
+                            card.append(heading, details);
+
+                            for (const [key, label] of permissionLabels) {
+                                const row = document.createElement('label');
+                                row.style.display = 'flex';
+                                row.style.alignItems = 'center';
+                                row.style.gap = '10px';
+                                row.style.margin = '12px 0';
+
+                                const checkbox = document.createElement('input');
+                                checkbox.type = 'checkbox';
+                                checkbox.checked = teacher[key];
+                                checkbox.style.width = 'auto';
+
+                                const text = document.createElement('span');
+                                text.textContent = label;
+
+
+
+                                checkbox.addEventListener('change', async () => {
+                                    const teacherName =
+                                        profileMap.get(teacher.teacher_id) || 'Нэр тодорхойгүй';
+
+                                    const teacherEmail =
+                                        emailMap.get(teacher.teacher_id) || 'Имэйл тодорхойгүй';
+
+                                    const newValue = checkbox.checked;
+                                    const oldValue = !newValue;
+
+                                    // Өөрийн Modal цонхыг харуулах
+                                    const confirmed = await showPermissionModal(
+                                        teacherName,
+                                        teacherEmail,
+                                        label,
+                                        newValue
+                                    );
+
+                                    // Болих товч дарсан бол өөрчлөлт хийхгүй
+                                    if (!confirmed) {
+                                        checkbox.checked = oldValue;
+                                        return;
+                                    }
+
+                                    checkbox.disabled = true;
+
+                                    try {
+                                        const { error: updateError } = await supabase
+                                            .from('teacher_permissions')
+                                            .update({
+                                                [key]: newValue,
+                                                updated_at: new Date().toISOString()
+                                            })
+                                            .eq('teacher_id', teacher.teacher_id);
+
+                                        if (updateError) throw updateError;
+
+                                        teacher[key] = newValue;
+
+                                        await showNoticeModal(
+                                            'Багшийн эрх амжилттай шинэчлэгдлээ.',
+                                            'success'
+                                        );
+
+                                    } catch (error) {
+                                        checkbox.checked = oldValue;
+
+                                        await showNoticeModal(
+                                            'Эрх өөрчлөхөд алдаа гарлаа: ' + error.message,
+                                            'error'
+                                        );
+                                    } finally {
+                                        checkbox.disabled = false;
+                                    }
+                                });
+
+
+
+                                row.append(checkbox, text);
+                                card.append(row);
+                            }
+
+                            const restricted = document.createElement('p');
+                            restricted.className = 'muted';
+                            restricted.textContent =
+                                'Хичээл нэмэх, засах, устгах эрх хаалттай.';
+                            card.append(restricted);
+
+                            list.append(card);
+                        }
+                    }
+
+                    searchInput.oninput = renderTeachers;
+                    renderTeachers();
+                }
+                async function loadTeacherClassTeachers() {
+                    const select = $('class-teacher-select');
+
+                    select.innerHTML =
+                        '<option value="">Багш сонгоно уу</option>';
+
+                    const { data: teachers, error } = await supabase
+                        .from('teacher_permissions')
+                        .select('teacher_id');
+
+                    if (error) {
+                        console.error('Багшийн жагсаалт:', error);
+                        await showNoticeModal(
+                            'Багшийн жагсаалт ачаалахад алдаа гарлаа: ' + error.message,
+                            'error'
+                        );
+                        return;
+                    }
+
+                    if (!teachers || teachers.length === 0) {
+                        select.innerHTML =
+                            '<option value="">Багш бүртгэгдээгүй байна</option>';
+                        return;
+                    }
+
+                    const teacherIds = teachers.map(t => t.teacher_id);
+
+                    const { data: profiles, error: profileError } = await supabase
+                        .from('student_profiles')
+                        .select('user_id, full_name')
+                        .in('user_id', teacherIds);
+
+                    if (profileError) {
+                        console.error(profileError);
+                        return;
+                    }
+
+                    profiles.forEach(profile => {
+                        const option = document.createElement('option');
+
+                        option.value = profile.user_id;
+                        option.textContent =
+                            profile.full_name || 'Нэр тодорхойгүй';
+
+                        select.appendChild(option);
+                    });
+                }
+
+                // Сургуулиудын жагсаалт ачаалах
+
+                async function loadSchools() {
+                    const selects = [
+                        $('class-school-select'),
+                        $('new-student-school'),
+                        $('student-import-school')
+                    ];
+
+                    const { data: schools, error } = await supabase
+                        .from('schools')
+                        .select('id, school_name')
+                        .order('school_name');
+
+                    if (error) {
+                        console.error('Сургуулийн жагсаалт:', error.message);
+                        return;
+                    }
+
+                    selects.forEach(select => {
+                        if (!select) return;
+
+                        select.innerHTML =
+                            '<option value="">Сургууль сонгоно уу</option>';
+
+                        for (const school of schools || []) {
+                            const option = document.createElement('option');
+                            option.value = school.id;
+                            option.textContent = school.school_name;
+                            select.appendChild(option);
+                        }
+                    });
+                }
+
+
+                // Сонгосон сургуулийн анги, бүлгийг ачаалах
+                async function loadSchoolClasses(schoolId) {
+                    const select = $('class-group-select');
+
+                    select.innerHTML =
+                        '<option value="">Анги, бүлэг сонгоно уу</option>';
+
+                    select.disabled = true;
+
+                    if (!schoolId) {
+                        select.innerHTML =
+                            '<option value="">Эхлээд сургууль сонгоно уу</option>';
+                        return;
+                    }
+
+                    const { data: classes, error } = await supabase
+                        .from('school_classes')
+                        .select('id, grade, class_group')
+                        .eq('school_id', schoolId)
+                        .order('grade')
+                        .order('class_group');
+
+                    if (error) {
+                        await showNoticeModal(
+                            'Анги, бүлгийн мэдээлэл ачаалахад алдаа гарлаа: ' +
+                            error.message,
+                            'error'
+                        );
+                        return;
+                    }
+
+                    if (!classes || classes.length === 0) {
+                        select.innerHTML =
+                            '<option value="">Бүртгэлтэй анги олдсонгүй</option>';
+                        return;
+                    }
+
+                    for (const item of classes) {
+                        const option = document.createElement('option');
+
+                        option.value = item.id;
+                        option.textContent =
+                            `Grade ${item.grade} — ${item.class_group}-р бүлэг`;
+
+                        select.appendChild(option);
+                    }
+
+                    select.disabled = false;
+                }
+                // Шинэ сурагчийн формд зориулсан анги, бүлгийн мэдээлэл
+                let newStudentClasses = [];
+
+                async function loadNewStudentClasses(schoolId) {
+                    const gradeSelect = $('new-student-grade');
+                    const groupSelect = $('new-student-group');
+
+                    gradeSelect.innerHTML =
+                        '<option value="">Анги сонгох</option>';
+
+                    groupSelect.innerHTML =
+                        '<option value="">Эхлээд анги сонгоно уу</option>';
+
+                    groupSelect.disabled = true;
+                    gradeSelect.disabled = true;
+
+                    newStudentClasses = [];
+
+                    if (!schoolId) return;
+
+                    const { data: classes, error } = await supabase
+                        .from('school_classes')
+                        .select('id, grade, class_group')
+                        .eq('school_id', schoolId)
+                        .order('grade')
+                        .order('class_group');
+
+                    if (error) {
+                        console.error('Сурагчийн анги ачаалах алдаа:', error.message);
+                        return;
+                    }
+
+                    newStudentClasses = classes || [];
+
+                    const grades = [...new Set(
+                        newStudentClasses.map(item => item.grade)
+                    )];
+
+                    grades.forEach(grade => {
+                        const option = document.createElement('option');
+                        option.value = grade;
+                        option.textContent = `${grade}-р анги`;
+                        gradeSelect.appendChild(option);
+                    });
+
+                    gradeSelect.disabled = false;
+                }
+                async function assignTeacherClass() {
+                    const schoolId = $('class-school-select').value;
+                    const teacherId = $('class-teacher-select').value;
+                    const schoolClassId = $('class-group-select').value;
+                    const message = $('teacher-class-message');
+
+                    if (!schoolId || !teacherId || !schoolClassId) {
+                        await showNoticeModal(
+                            'Сургууль, багш, анги бүлгээ бүрэн сонгоно уу.',
+                            'error'
+                        );
+                        return;
+                    }
+
+                    const { data: school, error: schoolError } = await supabase
+                        .from('schools')
+                        .select('school_name')
+                        .eq('id', schoolId)
+                        .single();
+
+                    if (schoolError) {
+                        await showNoticeModal(
+                            'Сургуулийн мэдээлэл авахад алдаа гарлаа: ' +
+                            schoolError.message,
+                            'error'
+                        );
+                        return;
+                    }
+
+                    const { data: selectedClass, error: classError } = await supabase
+                        .from('school_classes')
+                        .select('grade, class_group')
+                        .eq('id', schoolClassId)
+                        .eq('school_id', schoolId)
+                        .single();
+
+                    if (classError) {
+                        await showNoticeModal(
+                            'Анги, бүлгийн мэдээлэл авахад алдаа гарлаа: ' +
+                            classError.message,
+                            'error'
+                        );
+                        return;
+                    }
+
+                    const button = $('assign-class-btn');
+                    button.disabled = true;
+
+                    try {
+                        const { error } = await supabase
+                            .from('teacher_classes')
+                            .insert({
+                                teacher_id: teacherId,
+                                school_name: school.school_name,
+                                grade: selectedClass.grade,
+                                class_group: selectedClass.class_group,
+                                school_class_id: schoolClassId
+                            });
+
+                        if (error) throw error;
+
+                        message.textContent =
+                            `Grade ${selectedClass.grade} — ` +
+                            `${selectedClass.class_group}-р бүлгийг багшид оноолоо.`;
+
+                        await showNoticeModal(
+                            'Багшид анги, бүлэг амжилттай хариуцууллаа.',
+                            'success'
+                        );
+
+                    } catch (error) {
+                        await showNoticeModal(
+                            'Анги онооход алдаа гарлаа: ' + error.message,
+                            'error'
+                        );
+                    } finally {
+                        button.disabled = false;
+                    }
+                }
+
+
+
+
+                try {
+                    const allowed = await checkAdmin();
+
+                    if (allowed) {
+                        await loadCourses();
+                        await loadStudents();
+                        await loadTeacherPermissions();
+                        await loadTeacherClassTeachers();
+                        await loadSchools();
+
+
+
+                        $('class-school-select').addEventListener('change', async () => {
+                            await loadSchoolClasses($('class-school-select').value);
+                        });
+                        // Шинэ сурагчийн сургууль сонгох
+                        $('new-student-school').addEventListener('change', async () => {
+                            await loadNewStudentClasses($('new-student-school').value);
+                        });
+
+                        // Шинэ сурагчийн анги сонгох
+                        $('new-student-grade').addEventListener('change', () => {
+                            const grade = Number($('new-student-grade').value);
+                            const groupSelect = $('new-student-group');
+
+                            groupSelect.innerHTML =
+                                '<option value="">Бүлэг сонгоно уу</option>';
+
+                            const groups = newStudentClasses.filter(
+                                item => item.grade === grade
+                            );
+
+                            groups.forEach(item => {
+                                const option = document.createElement('option');
+                                option.value = item.id;
+                                option.textContent = `${item.class_group}-р бүлэг`;
+                                groupSelect.appendChild(option);
+                            });
+
+                            groupSelect.disabled = groups.length === 0;
+                        });
+                        $('assign-class-btn').addEventListener(
+                            'click',
+                            assignTeacherClass
+                        );
+
+                        renderSchoolGradeOptions();
+                        $('create-school-btn').addEventListener(
+                            'click',
+                            createSchool
+                        );
+                        $('save-new-student-btn').addEventListener(
+                            'click',
+                            createNewStudent
+                        );
+                        $('preview-student-import-btn').addEventListener(
+                            'click',
+                            previewStudentImport
+                        );
+                        $('download-student-template').addEventListener(
+    'click',
+    downloadStudentTemplate
+);
+                    }
+                } catch (error) {
+                    $('list-message').textContent =
+                        'Ачаалахад алдаа гарлаа: ' + error.message;
+                }
+            </script>
+            <style>
+                main>section[hidden] {
+                    display: none !important;
+                }
+            </style>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const mobileMenuButton = document.getElementById('mobile-menu-toggle');
+                    const sidebar = document.querySelector('.sidebar');
+
+                    if (mobileMenuButton && sidebar) {
+                        mobileMenuButton.addEventListener('click', () => {
+                            const isClosed = sidebar.classList.toggle('mobile-menu-closed');
+
+                            mobileMenuButton.setAttribute(
+                                'aria-expanded',
+                                String(!isClosed)
+                            );
+
+                            mobileMenuButton.textContent = isClosed
+                                ? '☰ Цэс нээх'
+                                : '✕ Цэс хаах';
+                        });
+                    }
+                    const menuLinks = document.querySelectorAll(
+                        '.sidebar a[href^="#"]'
+                    );
+
+                    const sections = document.querySelectorAll(
+                        'main > section'
+                    );
+
+                    function showSection(targetId) {
+                        const target = document.getElementById(targetId);
+
+                        if (!target || !target.matches('main > section')) {
+                            return;
+                        }
+
+                        // Бусад бүх хэсгийг нуух
+                        sections.forEach(section => {
+                            section.hidden = section !== target;
+                        });
+
+                        // Идэвхтэй цэсийг тодруулах
+                        menuLinks.forEach(link => {
+                            link.classList.toggle(
+                                'active',
+                                link.getAttribute('href') === '#' + targetId
+                            );
+                        });
+
+                        // Сонгосон цэсний дэд бүлгийг нээлттэй байлгах
+                        const parentMenu = target.closest('.menu-group');
+
+                        document.querySelectorAll('.menu-group').forEach(menu => {
+                            menu.open = menu === parentMenu;
+                        });
+                    }
+
+                    // Цэс дарах үйлдэл
+                    menuLinks.forEach(link => {
+                        link.addEventListener('click', event => {
+                            const targetId = link.getAttribute('href').substring(1);
+
+                            if (!document.getElementById(targetId)) return;
+
+                            event.preventDefault();
+                            showSection(targetId);
+                        });
+                    });
+
+                    // Эхлэхэд ерөнхий самбар харуулах
+                    showSection('dashboard');
+                });
+            </script>
 </body>
 </div>
 </div>
+
 </html>
